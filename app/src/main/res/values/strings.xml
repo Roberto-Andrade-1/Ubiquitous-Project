@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FinalProject</string>
+    <string name="PersonName">Name</string>
+    <string name="PersonSurname">Surname</string>
+    <string name="PersonPhone">Phone</string>
+    <string name="PersonAge">Age</string>
+    <string name="PersonWeight">Weight</string>
+    <string name="PersonHeight">Height</string>
+    <string name="PersonPassword">Password</string>
+    <string name="Register">Register</string>
+</resources>
