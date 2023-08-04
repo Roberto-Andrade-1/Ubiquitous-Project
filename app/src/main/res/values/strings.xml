@@ -8,4 +8,10 @@
     <string name="PersonHeight">Height</string>
     <string name="PersonPassword">Password</string>
     <string name="Register">Register</string>
+    <string name="SignUp">Sign Up</string>
+    <string name="ChallengeButton">Challenges</string>
+    <string name="WorkoutButton">Workout</string>
+    <string name="ExercisesButton">Exercises</string>
+    <string name="ProgressButton">Progress</string>
+    <string name="SettingsButton">Settings</string>
 </resources>

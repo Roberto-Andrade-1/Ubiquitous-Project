@@ -24,16 +24,41 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //FEEDBACK TABLE
     public static final String FEEDBACK_TABLE = "FEEDBACK_TABLE";
-    public static final String COLUMN_FEEDBACK_ID = "FEEDBACK_ID";
+    public static final String FEEDBACK_ID = "FEEDBACK_ID";
     public static final String COLUMN_SUBJECT = "SUBJECT";
     public static final String COLUMN_CONTENT = "CONTENT";
     public static final String COLUMN_PERSON_ID = "PERSON_ID"; // Foreign key for the Person ID
 
     //WORKOUT PLAN
     public static final String WORKOUT_PLAN_TABLE = "WORKOUT_PLAN_TABLE";
-    public static final String COLUMN_PLAN_ID = "PLAN_ID";
+    public static final String PLAN_ID = "PLAN_ID";
     public static final String COLUMN_PLAN_NAME = "PLAN_NAME";
     public static final String COLUMN_CREATION_DATE = "CREATION_DATE";
+
+    //WORKOUT
+    public static final String WORKOUT_TABLE = "WORKOUT_TABLE";
+    public static final String WORKOUT_ID = "WORKOUT_ID";
+    public static final String COLUMN_REPETITIONS = "REPETITIONS";
+    public static final String COLUMN_SETS = "SETS";
+    public static final String COLUMN_WORKOUT_PLAN_ID = "WORKOUT_PLAN_ID"; //Foreign key for workout ID
+
+    //WORKOUT RECORD
+    public static final String WORKOUT_RECORD_TABLE = "WORKOUT_RECORD_TABLE";
+    public static final String RECORD_ID = "RECORD_ID";
+    public static final String COLUMN_RECORD_DATE = "RECORD_DATE";
+    public static final String COLUMN_RECORD_TIME = "RECORD_TIME";
+    public static final String COLUMN_RECORD_DURATION = "RECORD_DURATION";
+    public static final String COLUMN_WEIGHT_USED = "WEIGHT_USED";
+    public static final String COLUMN_WORKOUT_ID = "COLUMN_WORKOUT_ID";
+
+    //EXERCISE
+    public static final String EXERCISE_TABLE = "EXERCISE_TABLE";
+    public static final String WORKOUT_EXERCISE_TABLE = "WORKOUT_EXERCISE_TABLE";
+    public static final String EXERCISE_ID = "EXERCISE_ID";
+    public static final String COLUMN_EXERCISE_ID = "COLUMN_EXERCISE_ID";
+    public static final String COLUMN_EXERCISE_NAME = "EXERCISE_NAME";
+    public static final String COLUMN_WORKED_MUSCLES = "WORKED_MUSCLES";
+    public static final String COLUMN_DESCRIPTION = "DESCRIPTION";
 
 
     public DataBaseHelper(@Nullable Context context) {
@@ -45,17 +70,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //table for the user
         String createPerson = "CREATE TABLE " + PERSON_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PERSON_NAME + " TEXT, " + COLUMN_PERSON_SURNAME + " TEXT, " + COLUMN_PERSON_PHONE + " INT, " + COLUMN_PERSON_AGE + " INT, " + COLUMN_PERSON_WEIGHT + " INT, " + COLUMN_PERSON_HEIGHT + " INT, " + COLUMN_PERSON_PASSWORD + " TEXT)";
         //table for the feedback
-        String createFeedback = "CREATE TABLE " + FEEDBACK_TABLE + " (" + COLUMN_FEEDBACK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_SUBJECT + " TEXT, " + COLUMN_CONTENT + " TEXT, " + COLUMN_PERSON_ID + " INTEGER, FOREIGN KEY (" + COLUMN_PERSON_ID + ") REFERENCES " + PERSON_TABLE + " (" + COLUMN_ID + ") ON DELETE CASCADE )";
+        String createFeedback = "CREATE TABLE " + FEEDBACK_TABLE + " (" + FEEDBACK_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_SUBJECT + " TEXT, " + COLUMN_CONTENT + " TEXT, " + COLUMN_PERSON_ID + " INTEGER, FOREIGN KEY (" + COLUMN_PERSON_ID + ") REFERENCES " + PERSON_TABLE + " (" + COLUMN_ID + ") ON DELETE CASCADE )";
         //table for the workout plan
-        String createWorkoutPlan = "CREATE TABLE " + WORKOUT_PLAN_TABLE + " (" + COLUMN_PLAN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PLAN_NAME + " TEXT, " + COLUMN_CREATION_DATE + " DATE)";
+        String createWorkoutPlan = "CREATE TABLE " + WORKOUT_PLAN_TABLE + " (" + PLAN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PLAN_NAME + " TEXT, " + COLUMN_CREATION_DATE + " DATE)";
         //table for the workout
-        String createWorkout = "CREATE TABLE WORKOUT_TABLE (WORKOUT_ID INTEGER PRIMARY KEY AUTOINCREMENT, REPETITIONS INT, SETS INT, WORKOUT_PLAN_ID INT, FOREIGN KEY (WORKOUT_PLAN_ID) REFERENCES " + WORKOUT_PLAN_TABLE + " ( " + COLUMN_PLAN_ID + ") )"; //STILL ONE FK LEFT
+        String createWorkout = "CREATE TABLE " + WORKOUT_TABLE + " (" + WORKOUT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_REPETITIONS + " INT, " + COLUMN_SETS + " INT, " + COLUMN_WORKOUT_PLAN_ID + " INT, " + COLUMN_EXERCISE_ID + " INT, FOREIGN KEY (" + COLUMN_WORKOUT_PLAN_ID + ") REFERENCES " + WORKOUT_PLAN_TABLE + " ( " + PLAN_ID + "), FOREIGN KEY (" + COLUMN_EXERCISE_ID + ") REFERENCES " + EXERCISE_TABLE + " (" + EXERCISE_ID + ") )";
         //table for the workout record
-        String createWorkoutRecord = "";
+        String createWorkoutRecord = "CREATE TABLE " + WORKOUT_RECORD_TABLE + " (" + RECORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_RECORD_DATE + " DATE, " + COLUMN_RECORD_TIME + " TIME, " + COLUMN_RECORD_DURATION + " INT, " + COLUMN_WEIGHT_USED + " FLOAT, " + COLUMN_PERSON_ID + " INT, " + COLUMN_WORKOUT_ID + " INT, FOREIGN KEY (" + COLUMN_PERSON_ID + ") REFERENCES " + PERSON_TABLE + " ( " + COLUMN_ID + " ), FOREIGN KEY (" + COLUMN_WORKOUT_ID + ") REFERENCES " + WORKOUT_TABLE + " ( " + WORKOUT_ID + ") )";
         //table for the workout exercise
-        String createWorkoutExercise = "";
+        String createWorkoutExercise = "CREATE TABLE " + WORKOUT_EXERCISE_TABLE + " (" + COLUMN_EXERCISE_ID + " INT, " + COLUMN_WORKOUT_ID + " INT, FOREIGN KEY (" + COLUMN_WORKOUT_ID + ") REFERENCES " + WORKOUT_TABLE + " (" + WORKOUT_ID + "), FOREIGN KEY (" + COLUMN_EXERCISE_ID + ") REFERENCES " + EXERCISE_TABLE + " (" + EXERCISE_ID + ") )";
         //table for the exercise
-        String createExercise = "";
+        String createExercise = "CREATE TABLE " + EXERCISE_TABLE + " (" + EXERCISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_EXERCISE_NAME + " TEXT, " + COLUMN_WORKED_MUSCLES + " TEXT, " + COLUMN_DESCRIPTION + " TEXT)";
 
         db.execSQL(createPerson);
         db.execSQL(createFeedback);

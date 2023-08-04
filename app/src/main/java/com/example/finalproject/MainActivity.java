@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
                 boolean success =dataBaseHelper.addOne(personModel);
 
                 Toast.makeText(MainActivity.this, "Success" + success, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(MainActivity.this, RealMain.class);
+                startActivity(intent);
             }
         });
     }
