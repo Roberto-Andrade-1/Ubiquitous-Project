@@ -14,4 +14,9 @@
     <string name="ExercisesButton">Exercises</string>
     <string name="ProgressButton">Progress</string>
     <string name="SettingsButton">Settings</string>
+    <string name="ChestText">Chest</string>
+    <string name="ArmsText">Arms</string>
+    <string name="LegsText">Legs</string>
+    <string name="BackText">Back</string>
+    <string name="CoreText">Core</string>
 </resources>

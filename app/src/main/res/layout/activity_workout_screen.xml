@@ -6,4 +6,148 @@
     android:layout_height="match_parent"
     tools:context=".WorkoutScreen">
 
+    <TextView
+        android:id="@+id/chestText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:text="@string/ChestText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/legsImage"
+        app:layout_constraintEnd_toStartOf="@+id/backText"
+        app:layout_constraintHorizontal_bias="0.638"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/chestImage"
+        app:layout_constraintVertical_bias="0.65" />
+
+    <TextView
+        android:id="@+id/armsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/ArmsText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.722"
+        app:layout_constraintStart_toEndOf="@+id/legsText"
+        app:layout_constraintTop_toTopOf="@+id/armsImage"
+        app:layout_constraintVertical_bias="0.639" />
+
+    <TextView
+        android:id="@+id/legsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:text="@string/LegsText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/armsText"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/legsImage"
+        app:layout_constraintVertical_bias="0.639" />
+
+    <TextView
+        android:id="@+id/backText"
+        android:layout_width="47dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="30dp"
+        android:text="@string/BackText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/armsImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chestText"
+        app:layout_constraintTop_toTopOf="@+id/backImage"
+        app:layout_constraintVertical_bias="0.64" />
+
+    <TextView
+        android:id="@+id/coreText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="264dp"
+        android:text="@string/CoreText"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/coreImage"
+        app:layout_constraintVertical_bias="0.984" />
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="45dp"
+        android:layout_height="37dp"
+        android:background="@drawable/arrow_back"
+        android:backgroundTint="@color/black"
+        android:backgroundTintMode="add"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/chestImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/chestImage"
+        android:layout_width="102dp"
+        android:layout_height="234dp"
+        android:layout_marginEnd="25dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        android:outlineAmbientShadowColor="#00000000"
+        android:outlineSpotShadowColor="#00FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/legsImage"
+        app:layout_constraintEnd_toStartOf="@+id/backImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/chest_group" />
+
+    <ImageView
+        android:id="@+id/backImage"
+        android:layout_width="102dp"
+        android:layout_height="234dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/armsImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/chestImage"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_group" />
+
+    <ImageView
+        android:id="@+id/armsImage"
+        android:layout_width="102dp"
+        android:layout_height="234dp"
+        android:layout_marginStart="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/legsImage"
+        app:layout_constraintTop_toBottomOf="@+id/backImage"
+        app:srcCompat="@drawable/arms_group" />
+
+    <ImageView
+        android:id="@+id/legsImage"
+        android:layout_width="102dp"
+        android:layout_height="234dp"
+        android:layout_marginEnd="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/armsImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chestImage"
+        app:srcCompat="@drawable/legs_group" />
+
+    <ImageView
+        android:id="@+id/coreImage"
+        android:layout_width="102dp"
+        android:layout_height="234dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/core_group" />
 </androidx.constraintlayout.widget.ConstraintLayout>

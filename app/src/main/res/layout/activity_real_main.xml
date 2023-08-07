@@ -8,16 +8,25 @@
 
     <Button
         android:id="@+id/settingsButton"
-        android:layout_width="103dp"
-        android:layout_height="49dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginTop="40dp"
+        android:backgroud="@color/black"
+        android:background="@drawable/settings"
+        android:backgroundTint="#000000"
         android:text="@string/SettingsButton"
+        android:textColor="#00000000"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000"
+        android:textColorLink="#000000"
+        app:iconTint="#000000"
         app:layout_constraintBottom_toTopOf="@+id/challengesButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42000002" />
+        app:layout_constraintVertical_bias="0.42000002"
+        app:rippleColor="#000000" />
 
     <Button
         android:id="@+id/challengesButton"
@@ -25,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
         android:text="@string/ChallengeButton"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
@@ -33,8 +43,9 @@
         android:id="@+id/exercisesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="92dp"
         android:text="@string/ExercisesButton"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/workoutButton"
         app:layout_constraintTop_toBottomOf="@+id/challengesButton" />
@@ -46,6 +57,7 @@
         android:layout_marginTop="104dp"
         android:layout_marginBottom="128dp"
         android:text="@string/WorkoutButton"
+        android:textSize="32sp"
         app:layout_constraintBottom_toTopOf="@+id/progressButton"
         app:layout_constraintEnd_toStartOf="@+id/exercisesButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ProgressButton"
+        android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
