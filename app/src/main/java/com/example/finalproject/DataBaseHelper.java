@@ -93,12 +93,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(createWorkoutExercise);
         db.execSQL(createExercise);
 
-        insertExercises(db);
+        insertDefaultExercises(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
     }
 
     //method to add a new person with it's information on the database
@@ -201,21 +200,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    private void insertExercises(SQLiteDatabase db){
-        ContentValues exerciseValues=new ContentValues();
+    private void insertDefaultExercises(SQLiteDatabase db) {
 
-        //Push-ups
-        exerciseValues.put(COLUMN_EXERCISE_NAME,"Push-ups");
-        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Chest");
-        exerciseValues.put(COLUMN_DESCRIPTION,".......");
-        db.insert(EXERCISE_TABLE,null, exerciseValues);
+        insertExercise(db, "Push-ups", "Chest", "...");
+        insertExercise(db, "Tricep dips", "Tricep", "...");
 
-        //Tricep dips
-        exerciseValues.clear();
-        exerciseValues.put(COLUMN_EXERCISE_NAME,"Tricep dips");
-        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Tricep");
-        exerciseValues.put(COLUMN_DESCRIPTION,".......");
-        db.insert(EXERCISE_TABLE,null, exerciseValues);
+    }
+
+    private long insertExercise(SQLiteDatabase db, String name, String workedMuscles, String description) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_EXERCISE_NAME, name);
+        values.put(COLUMN_WORKED_MUSCLES, workedMuscles);
+        values.put(COLUMN_DESCRIPTION, description);
+        return db.insert(EXERCISE_TABLE, null, values);
     }
 
 
