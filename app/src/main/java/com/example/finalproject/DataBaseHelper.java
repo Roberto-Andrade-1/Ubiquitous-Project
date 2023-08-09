@@ -186,24 +186,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put();
+        cv.put(COLUMN_RECORD_DATE, workoutRecordModel.getDate().toString());
+        cv.put(COLUMN_RECORD_TIME, workoutRecordModel.getTime().toString());
+        cv.put(COLUMN_RECORD_DURATION, workoutRecordModel.getDuration());
+        cv.put(COLUMN_WEIGHT_USED, workoutRecordModel.getWeightUsed());
+        cv.put(COLUMN_PERSON_ID, workoutRecordModel.getPersonID());
 
-        long insert = db.insert(, null, cv);
-
-        if(insert == -1){
-            return false;
-        }else {
-            return true;
-        }
-    }
-    //method to add a new Exercise
-    public boolean (){
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-
-        long insert = db.insert(, null, cv);
+        long insert = db.insert(WORKOUT_RECORD_TABLE, null, cv);
 
         if(insert == -1){
             return false;
@@ -211,6 +200,24 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return true;
         }
     }
+
+    private void insertExercises(SQLiteDatabase db){
+        ContentValues exerciseValues=new ContentValues();
+
+        //Push-ups
+        exerciseValues.put(COLUMN_EXERCISE_NAME,"Push-ups");
+        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Chest");
+        exerciseValues.put(COLUMN_DESCRIPTION,".......");
+        db.insert(EXERCISE_TABLE,null, exerciseValues);
+
+        //Tricep dips
+        exerciseValues.clear();
+        exerciseValues.put(COLUMN_EXERCISE_NAME,"Tricep dips");
+        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Tricep");
+        exerciseValues.put(COLUMN_DESCRIPTION,".......");
+        db.insert(EXERCISE_TABLE,null, exerciseValues);
+    }
+
 
     //method to check the login information
     public boolean checkPhonePassword (String phone, String password){
@@ -234,22 +241,5 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }else{
             return false;
         }
-    }
-
-    private void insertExercises(SQLiteDatabase db){
-        ContentValues exerciseValues=new ContentValues();
-
-        //Push-ups
-        exerciseValues.put(COLUMN_EXERCISE_NAME,"Push-ups");
-        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Chest");
-        exerciseValues.put(COLUMN_DESCRIPTION,".......");
-        db.insert(EXERCISE_TABLE,null, exerciseValues);
-
-        //Tricep dips
-        exerciseValues.clear();
-        exerciseValues.put(COLUMN_EXERCISE_NAME,"Tricep dips");
-        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Tricep");
-        exerciseValues.put(COLUMN_DESCRIPTION,".......");
-        db.insert(EXERCISE_TABLE,null, exerciseValues);
     }
 }

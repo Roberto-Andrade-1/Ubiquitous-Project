@@ -15,12 +15,15 @@ public class WorkoutRecordModel {
 
     private float weightUsed;
 
-    public WorkoutRecordModel(int id, Date date, Time time, int duration, float weightUsed) {
+    private int personID;
+
+    public WorkoutRecordModel(int id, Date date, Time time, int duration, float weightUsed, int personID) {
         this.id = id;
         this.date = date;
         this.time = time;
         this.duration = duration;
         this.weightUsed = weightUsed;
+        this.personID = personID;
     }
 
     public WorkoutRecordModel() {
@@ -66,6 +69,10 @@ public class WorkoutRecordModel {
         this.weightUsed = weightUsed;
     }
 
+    public int getPersonID() {return personID;}
+
+    public void setPersonID(int personID) {this.personID = personID;}
+
     @Override
     public String toString() {
         return "WorkoutRecordModel{" +
@@ -74,6 +81,7 @@ public class WorkoutRecordModel {
                 ", time=" + time +
                 ", duration=" + duration +
                 ", weightUsed=" + weightUsed +
+                ", personID=" + personID +
                 '}';
     }
 }
