@@ -3,6 +3,7 @@ package com.example.finalproject;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -117,7 +118,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if(insert == -1){
             return false;
-        }else {
+        } else {
             return true;
         }
     }
@@ -126,7 +127,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //method to add a new WorkoutPlan
 
-    public boolean checkPhonePassword (){
+    public boolean checkPhonePassword (String phone, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("Select * from " + PERSON_TABLE + " where " + COLUMN_PERSON_PHONE + " = ? and " + COLUMN_PERSON_PASSWORD + " = ? ", new String[]{phone, password});
 
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public boolean checkPhones (String phone){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("Select * from " + PERSON_TABLE + " where " + COLUMN_PERSON_PHONE + " = ? ", new String[]{phone});
+
+        if(cursor.getCount() > 0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

@@ -19,4 +19,5 @@
     <string name="LegsText">Legs</string>
     <string name="BackText">Back</string>
     <string name="CoreText">Core</string>
+    <string name="log_in">Log In</string>
 </resources>

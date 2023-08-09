@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
     Button personRegister;
     EditText personName, personSurname, personPhone, personAge, personWeight, personHeight, personPassword;
 
+    DataBaseHelper dataBaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,32 +30,45 @@ public class MainActivity extends AppCompatActivity {
         personHeight = findViewById(R.id.personHeigth);
         personPassword = findViewById(R.id.personPassword);
 
+        dataBaseHelper = new DataBaseHelper(this);
+
         // button listener to add a new person
         personRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 PersonModel personModel;
-                try {
-                    personModel = new PersonModel(-1, personName.getText().toString(), personSurname.getText().toString(), Integer.parseInt(personPhone.getText().toString()), Integer.parseInt(personAge.getText().toString()), Integer.parseInt(personWeight.getText().toString()), Integer.parseInt(personHeight.getText().toString()), personPassword.getText().toString());
 
-                    Toast.makeText(MainActivity.this, "Added", Toast.LENGTH_SHORT).show();
+                String name = personName.getText().toString();
+                String surname = personSurname.getText().toString();
+                String phone = personPhone.getText().toString();
+                String age = personAge.getText().toString();
+                String weight = personWeight.getText().toString();
+                String height = personHeight.getText().toString();
+                String password = personPassword.getText().toString();
 
-                }catch (Exception e){
+                if (name.equals("") || surname.equals("") || phone.equals("") || age.equals("") || weight.equals("") || height.equals("") || password.equals("")){
 
-                    Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "All fields are mandatory", Toast.LENGTH_SHORT).show();
 
-                    personModel = new PersonModel(-1, "error", "error", 0, 0, 0, 0, "error");
+                } else {
+
+                    if(dataBaseHelper.checkPhones(phone) == false){
+
+                        personModel = new PersonModel(-1, name, surname, Integer.parseInt(phone), Integer.parseInt(age), Integer.parseInt(weight), Integer.parseInt(height), password);
+                        dataBaseHelper.addOne(personModel);
+
+                        Toast.makeText(MainActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
+
+                        Intent intent1 = new Intent(MainActivity.this, RealMain.class);
+                        startActivity(intent1);
+
+                    } else {
+
+                        Toast.makeText(MainActivity.this, "This phone number already exists, please login.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
-                DataBaseHelper dataBaseHelper = new DataBaseHelper(MainActivity.this);
-
-                boolean success = dataBaseHelper.addOne(personModel);
-
-                Toast.makeText(MainActivity.this, "Success" + success, Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(MainActivity.this, RealMain.class);
-                startActivity(intent);
             }
         });
     }

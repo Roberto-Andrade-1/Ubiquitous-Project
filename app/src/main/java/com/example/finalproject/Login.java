@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -35,8 +36,14 @@ public class Login extends AppCompatActivity {
 
                 if(phon.equals("") || pass.equals("")){
                     Toast.makeText(Login.this,"All fields are required", Toast.LENGTH_SHORT).show();
-                } else{
+                } else {
+                    Boolean checkCredentials = dataBaseHelper.checkPhonePassword(phon, pass);
 
+                    if(checkCredentials == true){
+                        Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent (Login.this, RealMain.class);
+                        startActivity(intent);
+                    }
                 }
             }
         });
