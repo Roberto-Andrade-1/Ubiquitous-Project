@@ -10,6 +10,7 @@ public class ExerciseModel {
 
     private String description;
 
+
     public ExerciseModel(int id, String exerciseName, String workedMuscles, String description) {
         this.id = id;
         this.exerciseName = exerciseName;

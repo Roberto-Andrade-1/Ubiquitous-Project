@@ -93,6 +93,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(createWorkoutExercise);
         db.execSQL(createExercise);
 
+        insertExercises(db);
     }
 
     @Override
@@ -233,5 +234,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }else{
             return false;
         }
+    }
+
+    private void insertExercises(SQLiteDatabase db){
+        ContentValues exerciseValues=new ContentValues();
+
+        //Push-ups
+        exerciseValues.put(COLUMN_EXERCISE_NAME,"Push-ups");
+        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Chest");
+        exerciseValues.put(COLUMN_DESCRIPTION,".......");
+        db.insert(EXERCISE_TABLE,null, exerciseValues);
+
+        //Tricep dips
+        exerciseValues.clear();
+        exerciseValues.put(COLUMN_EXERCISE_NAME,"Tricep dips");
+        exerciseValues.put(COLUMN_WORKED_MUSCLES,"Tricep");
+        exerciseValues.put(COLUMN_DESCRIPTION,".......");
+        db.insert(EXERCISE_TABLE,null, exerciseValues);
     }
 }
