@@ -124,9 +124,94 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     //method to add a new Feedback
+    public boolean addFeedback(FeedbackModel feedbackModel){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_SUBJECT, feedbackModel.getSubject());
+        cv.put(COLUMN_CONTENT, feedbackModel.getContent());
+        cv.put(COLUMN_PERSON_ID, feedbackModel.getUserId());
+
+        long insert = db.insert(FEEDBACK_TABLE, null, cv);
+
+        if(insert == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     //method to add a new WorkoutPlan
+    public boolean addWorkoutPlan(WorkoutPlanModel workoutPlanModel){
 
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_PLAN_NAME, workoutPlanModel.getName());
+        cv.put(COLUMN_CREATION_DATE, workoutPlanModel.getDate().toString());
+
+        long insert = db.insert(WORKOUT_PLAN_TABLE, null, cv);
+
+        if(insert == -1){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    //method to add a new Workout
+    public boolean addWorkout(WorkoutModel workoutModel){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_REPETITIONS, workoutModel.getRepetitions());
+        cv.put(COLUMN_SETS, workoutModel.getSets());
+        cv.put(COLUMN_WORKOUT_PLAN_ID, workoutModel.getPlanID());
+        cv.put(COLUMN_EXERCISE_ID, workoutModel.getExerciseID());
+
+        long insert = db.insert(WORKOUT_TABLE, null, cv);
+
+        if(insert == -1){
+            return false;
+        } else {
+            return true;
+        }
+    }
+    //method to add a new Workout Record
+    public boolean addWorkoutRecord(WorkoutRecordModel workoutRecordModel){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put();
+
+        long insert = db.insert(, null, cv);
+
+        if(insert == -1){
+            return false;
+        }else {
+            return true;
+        }
+    }
+    //method to add a new Exercise
+    public boolean (){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+
+        long insert = db.insert(, null, cv);
+
+        if(insert == -1){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    //method to check the login information
     public boolean checkPhonePassword (String phone, String password){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from " + PERSON_TABLE + " where " + COLUMN_PERSON_PHONE + " = ? and " + COLUMN_PERSON_PASSWORD + " = ? ", new String[]{phone, password});
