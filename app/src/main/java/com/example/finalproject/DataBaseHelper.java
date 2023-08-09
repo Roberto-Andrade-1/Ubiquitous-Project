@@ -61,10 +61,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DESCRIPTION = "DESCRIPTION";
 
 
+    //creates the database along with it's name
     public DataBaseHelper(@Nullable Context context) {
         super(context, "person.db", null, 1);
     }
 
+    // creates all the tables needed in the database, where the information will be stored
     @Override
     public void onCreate(SQLiteDatabase db) {
         //table for the user
@@ -97,6 +99,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    //method to add a new person with it's information on the database
     public boolean addOne(PersonModel personModel){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -117,5 +120,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }else {
             return true;
         }
+    }
+
+    //method to add a new Feedback
+
+    //method to add a new WorkoutPlan
+
+    public boolean checkPhonePassword (){
+
     }
 }
