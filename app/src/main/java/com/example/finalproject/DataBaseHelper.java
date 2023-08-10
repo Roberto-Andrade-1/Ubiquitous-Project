@@ -305,4 +305,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public List<ExerciseModel> getExercisesByCategory(String category) {
+        List<ExerciseModel> exerciseList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + EXERCISE_TABLE + " WHERE " + COLUMN_WORKED_MUSCLES + " = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{category});
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(EXERCISE_ID));
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_EXERCISE_NAME));
+                String muscles = cursor.getString(cursor.getColumnIndex(COLUMN_WORKED_MUSCLES));
+                String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+
+                ExerciseModel exercise = new ExerciseModel(id, name, muscles, description);
+                exerciseList.add(exercise);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return exerciseList;
+    }
+
 }

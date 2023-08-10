@@ -35,40 +35,45 @@ public class WorkoutScreen extends AppCompatActivity {
         chest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(WorkoutScreen.this, );*/
-
+                Intent intent=new Intent(WorkoutScreen.this,ExercisesScreen.class);
+                intent.putExtra("category","Chest");
+                startActivity(intent);
             }
         });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(WorkoutScreen.this, );*/
-
+                Intent intent=new Intent(WorkoutScreen.this,ExercisesScreen.class);
+                intent.putExtra("category","Back");
+                startActivity(intent);
             }
         });
 
         core.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(WorkoutScreen.this, );*/
-
+                Intent intent=new Intent(WorkoutScreen.this,ExercisesScreen.class);
+                intent.putExtra("category","Core");
+                startActivity(intent);
             }
         });
 
         legs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(WorkoutScreen.this, );*/
-
+                Intent intent=new Intent(WorkoutScreen.this,ExercisesScreen.class);
+                intent.putExtra("category","Legs");
+                startActivity(intent);
             }
         });
 
         arms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Intent intent = new Intent(WorkoutScreen.this, );*/
-
+                Intent intent=new Intent(WorkoutScreen.this,ExercisesScreen.class);
+                intent.putExtra("category","Arms");
+                startActivity(intent);
             }
         });
     }
