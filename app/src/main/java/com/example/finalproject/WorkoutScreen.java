@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 public class WorkoutScreen extends AppCompatActivity {
 
-    Button backButton;
+    Button backButton, allExercises;
     ImageView core, back, legs, arms, chest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,7 @@ public class WorkoutScreen extends AppCompatActivity {
         arms = findViewById(R.id.armsImage);
         chest = findViewById(R.id.chestImage);
         backButton = findViewById(R.id.backButton);
+        allExercises = findViewById(R.id.allExercisesButton);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,5 +77,15 @@ public class WorkoutScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        allExercises.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(WorkoutScreen.this,ExercisesScreen.class);
+                intent.putExtra("category","all");
+                startActivity(intent);
+            }
+        });
+
     }
 }
