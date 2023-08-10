@@ -206,7 +206,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private void insertDefaultExercises(SQLiteDatabase db) {
 
         insertExercise(db, "Push-ups", "Chest", "...");
-        insertExercise(db, "Tricep dips", "Tricep", "...");
+        insertExercise(db, "Bench Press", "Chest", "...");
+        insertExercise(db, "Tricep Dips", "Arms", "...");
+        insertExercise(db, "Diamond Push-ups", "Arms", "...");
+        insertExercise(db, "Bodyweight Squats", "Legs", "...");
+        insertExercise(db, "Lunges", "Legs", "...");
+        insertExercise(db, "Plank", "Core", "...");
+        insertExercise(db, "Russian Twists", "Core", "...");
+        insertExercise(db, "Superman", "Back", "...");
+        insertExercise(db, "Bent-over Rows", "Back", "...");
+
 
     }
 
