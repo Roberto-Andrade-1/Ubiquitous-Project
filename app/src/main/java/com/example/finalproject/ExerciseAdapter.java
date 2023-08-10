@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder> {
 
+    private Context context;
     private List<ExerciseModel> exerciseList;
 
-    public ExerciseAdapter(List<ExerciseModel> exerciseList) {
+    public ExerciseAdapter(Context context, List<ExerciseModel> exerciseList) {
+        this.context = context;
         this.exerciseList = exerciseList;
     }
 
@@ -32,15 +37,19 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         ExerciseModel currentExercise = exerciseList.get(position);
 
         holder.exerciseNameTextView.setText(currentExercise.getExerciseName());
-        holder.exerciseImageView.setText(currentExercise.getWorkedMuscles());
-
+        holder.exerciseMuscleTextView.setText(currentExercise.getWorkedMuscles());
 
         int gifResource = context.getResources().getIdentifier(
-                currentExercise.getExerciseName().toLowerCase().replace(" ", "_"),
+                currentExercise.getExerciseName().toLowerCase().replace("-", "_").replace(" ", "_"),
                 "drawable",
                 context.getPackageName()
         );
-        holder.exerciseImageView.setImageResource(gifResource);
+
+        Glide.with(context)
+                .asGif()
+                .load(gifResource)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(holder.exerciseImageView);
     }
 
 
@@ -51,12 +60,14 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
 
     static class ExerciseViewHolder extends RecyclerView.ViewHolder {
         TextView exerciseNameTextView;
+        TextView exerciseMuscleTextView;
         ImageView exerciseImageView;
 
         ExerciseViewHolder(@NonNull View itemView) {
             super(itemView);
             exerciseNameTextView = itemView.findViewById(R.id.exerciseName);
-            exerciseImageView = itemView.findViewById(R.id.exerciseMuscles);
+            exerciseMuscleTextView = itemView.findViewById(R.id.exerciseMuscles);
+            exerciseImageView = itemView.findViewById(R.id.exerciseImage);
         }
     }
 }

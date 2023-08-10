@@ -22,7 +22,7 @@ public class ExercisesScreen extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<ExerciseModel> exerciseList=fetchExerciseFromDatabase();
-        exerciseAdapter= new ExerciseAdapter(exerciseList);
+        exerciseAdapter= new ExerciseAdapter(this,exerciseList);
         recyclerView.setAdapter(exerciseAdapter);
     }
 
