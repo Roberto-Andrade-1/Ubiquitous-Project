@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DataBaseHelper extends SQLiteOpenHelper {
 
 
@@ -238,5 +241,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }else{
             return false;
         }
+    }
+
+    public List<ExerciseModel> getAllExercises(){
+
+        List<ExerciseModel> exerciseList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(EXERCISE_TABLE, null, null, null, null, null, null);
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                int id = cursor.getInt(cursor.getColumnIndex(EXERCISE_ID));
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_EXERCISE_NAME));
+                String workedMuscles = cursor.getString(cursor.getColumnIndex(COLUMN_WORKED_MUSCLES));
+                String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+
+                ExerciseModel exercise = new ExerciseModel(id, name, workedMuscles, description);
+                exerciseList.add(exercise);
+            }
+            cursor.close();
+        }
+        db.close();
+
+        return exerciseList;
     }
 }
