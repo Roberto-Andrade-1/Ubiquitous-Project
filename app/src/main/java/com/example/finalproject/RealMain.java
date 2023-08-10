@@ -22,10 +22,13 @@ public class RealMain extends AppCompatActivity {
         exercisesButton = findViewById(R.id.exercisesButton);
         progressButton = findViewById(R.id.progressButton);
 
+        String phoneNumber = getIntent().getStringExtra("userPhone");
+
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RealMain.this, SettingsScreen.class);
+                intent.putExtra("userPhone",phoneNumber);
                 startActivity(intent);
             }
         });

@@ -265,4 +265,35 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return exerciseList;
     }
+
+    public PersonModel getUser (String userPhone){
+
+        PersonModel user = new PersonModel();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "select * from " + PERSON_TABLE + " where " + COLUMN_PERSON_PHONE + " = '" + userPhone + "' ";
+
+        Cursor cursor = db.rawQuery(query,null);
+
+        if(cursor != null) {
+            while(cursor.moveToNext()){
+                int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_PERSON_NAME));
+                String surname = cursor.getString(cursor.getColumnIndex(COLUMN_PERSON_SURNAME));
+                int phone = cursor.getInt(cursor.getColumnIndex(COLUMN_PERSON_PHONE));
+                int age = cursor.getInt(cursor.getColumnIndex(COLUMN_PERSON_AGE));
+                int weight = cursor.getInt(cursor.getColumnIndex(COLUMN_PERSON_WEIGHT));
+                int height = cursor.getInt(cursor.getColumnIndex(COLUMN_PERSON_HEIGHT));
+                String password = cursor.getString(cursor.getColumnIndex(COLUMN_PERSON_PASSWORD));
+
+                user.setId(id); user.setName(name); user.setSurname(surname); user.setPhone(phone);
+                user.setAge(age); user.setWeight(weight); user.setHeight(height); user.setPassword(password);
+            }
+        }
+
+        return user;
+    }
+
+
 }

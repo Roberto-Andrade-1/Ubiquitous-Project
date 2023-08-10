@@ -35,9 +35,41 @@ public class WorkoutScreen extends AppCompatActivity {
         chest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*Intent intent = new Intent(WorkoutScreen.this, );*/
 
             }
         });
 
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Intent intent = new Intent(WorkoutScreen.this, );*/
+
+            }
+        });
+
+        core.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Intent intent = new Intent(WorkoutScreen.this, );*/
+
+            }
+        });
+
+        legs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Intent intent = new Intent(WorkoutScreen.this, );*/
+
+            }
+        });
+
+        arms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Intent intent = new Intent(WorkoutScreen.this, );*/
+
+            }
+        });
     }
 }

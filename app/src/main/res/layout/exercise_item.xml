@@ -7,9 +7,10 @@
 
     <ImageView
         android:id="@+id/exerciseImage"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:contentDescription="Exercise Image"/>
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:src="@drawable/default_exercise_image"
+    android:contentDescription="Exercise Image"/>
 
     <LinearLayout
         android:layout_width="0dp"

@@ -42,6 +42,7 @@ public class Login extends AppCompatActivity {
                     if(checkCredentials == true){
                         Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent (Login.this, RealMain.class);
+                        intent.putExtra("userPhone", phon);
                         startActivity(intent);
                     } else {
                         Toast.makeText(Login.this, "Need to register", Toast.LENGTH_SHORT).show();
