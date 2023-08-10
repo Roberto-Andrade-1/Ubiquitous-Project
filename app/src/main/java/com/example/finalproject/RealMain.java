@@ -53,6 +53,7 @@ public class RealMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RealMain.this, ExercisesScreen.class);
+                intent.putExtra("category","all");
                 startActivity(intent);
             }
         });
