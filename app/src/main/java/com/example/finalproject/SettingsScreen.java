@@ -2,16 +2,20 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class SettingsScreen extends AppCompatActivity {
 
     DataBaseHelper dataBaseHelper;
+
+    TextView click;
 
     Button saveButton;
 
@@ -30,31 +34,26 @@ public class SettingsScreen extends AppCompatActivity {
 
             EditText Name = findViewById(R.id.name);
             Name.setText(currentUser.getName());
-            String newName = Name.getText().toString();
 
             EditText Surname = findViewById(R.id.surname);
             Surname.setText(currentUser.getSurname());
-            String newSurname = Surname.getText().toString();
 
             EditText Phone = findViewById(R.id.phone);
             Phone.setText(String.valueOf(currentUser.getPhone()));
-            String newPhone = Phone.getText().toString();
 
             EditText Age = findViewById(R.id.age);
             Age.setText(String.valueOf(currentUser.getAge()));
-            String newAge = Age.getText().toString();
 
             EditText Weight = findViewById(R.id.weight);
             Weight.setText(String.valueOf(currentUser.getWeight()));
-            String newWeight = Weight.getText().toString();
 
             EditText Height = findViewById(R.id.height);
             Height.setText(String.valueOf(currentUser.getHeight()));
-            String newHeight = Height.getText().toString();
 
             EditText Password = findViewById(R.id.password);
             Password.setText(currentUser.getPassword());
-            String newPassword = Password.getText().toString();
+
+            click = findViewById(R.id.clickHere);
 
             saveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,6 +101,13 @@ public class SettingsScreen extends AppCompatActivity {
                 }
             });
 
+            click.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(SettingsScreen.this, FeedbackScreen.class);
+                    startActivity(intent);
+                }
+            });
 
         }
     }
