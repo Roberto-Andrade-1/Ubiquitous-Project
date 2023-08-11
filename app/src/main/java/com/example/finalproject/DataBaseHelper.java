@@ -14,6 +14,7 @@ import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
 
+    private static PersonModel currentUser;
 
     //PERSON TABLE
     public static final String PERSON_TABLE = "PERSON_TABLE";
@@ -300,10 +301,35 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 user.setAge(age); user.setWeight(weight); user.setHeight(height); user.setPassword(password);
             }
         }
-
         return user;
     }
 
+    public static void setCurrentUser(PersonModel user) {
+        currentUser = user;
+    }
+
+    public static PersonModel getCurrentUser() {
+        return currentUser;
+    }
+
+    public boolean updateUser(PersonModel user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(COLUMN_PERSON_NAME, user.getName());
+        values.put(COLUMN_PERSON_SURNAME,user.getSurname());
+        values.put(COLUMN_PERSON_PHONE,user.getPhone());
+        values.put(COLUMN_PERSON_AGE, user.getAge());
+        values.put(COLUMN_PERSON_WEIGHT, user.getWeight());
+        values.put(COLUMN_PERSON_HEIGHT,user.getHeight());
+        values.put(COLUMN_PERSON_PASSWORD,user.getPassword());
+
+
+        int rowsAffected = db.update(PERSON_TABLE, values, COLUMN_ID + " = ?", new String[]{String.valueOf(user.getId())});
+        db.close();
+
+        return rowsAffected > 0; // Return true if at least one row was affected
+    }
 
     public List<ExerciseModel> getExercisesByCategory(String category) {
         List<ExerciseModel> exerciseList = new ArrayList<>();

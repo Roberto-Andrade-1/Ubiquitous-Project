@@ -60,6 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
                         Toast.makeText(MainActivity.this, "Registration Successful", Toast.LENGTH_SHORT).show();
 
+                        PersonModel currentUser = dataBaseHelper.getUser(phone);
+                        dataBaseHelper.setCurrentUser(currentUser);
+
                         Intent intent1 = new Intent(MainActivity.this, RealMain.class);
                         startActivity(intent1);
 
