@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,8 +42,13 @@ public class Login extends AppCompatActivity {
 
                     if(checkCredentials == true){
                         Toast.makeText(Login.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+
+                        PersonModel currentUser = dataBaseHelper.getUser(phon);
+                        dataBaseHelper.setCurrentUser(currentUser);
+
+
                         Intent intent = new Intent (Login.this, RealMain.class);
-                        intent.putExtra("userPhone", phon);
+
                         startActivity(intent);
                     } else {
                         Toast.makeText(Login.this, "Need to register", Toast.LENGTH_SHORT).show();

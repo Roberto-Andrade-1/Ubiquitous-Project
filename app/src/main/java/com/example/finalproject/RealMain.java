@@ -28,7 +28,6 @@ public class RealMain extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RealMain.this, SettingsScreen.class);
-                intent.putExtra("userPhone",phoneNumber);
                 startActivity(intent);
             }
         });
