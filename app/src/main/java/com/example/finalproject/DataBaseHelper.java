@@ -356,4 +356,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return exerciseList;
     }
 
+    public List<String> getAllMuscleGroups(){
+        List<String> muscleGroupList=new ArrayList<>();
+        
+    }
 }
