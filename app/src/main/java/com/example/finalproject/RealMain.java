@@ -43,7 +43,7 @@ public class RealMain extends AppCompatActivity {
         workoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RealMain.this, WorkoutScreen.class);
+                Intent intent = new Intent(RealMain.this, WorkoutPlanScreen.class);
                 startActivity(intent);
             }
         });
