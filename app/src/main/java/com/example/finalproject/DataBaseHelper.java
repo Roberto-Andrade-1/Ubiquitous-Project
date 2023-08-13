@@ -6,10 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -81,7 +84,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         //table for the workout plan
         String createWorkoutPlan = "CREATE TABLE " + WORKOUT_PLAN_TABLE + " (" + PLAN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PLAN_NAME + " TEXT, " + COLUMN_CREATION_DATE + " DATE)";
         //table for the workout
-        String createWorkout = "CREATE TABLE " + WORKOUT_TABLE + " (" + WORKOUT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_REPETITIONS + " INT, " + COLUMN_SETS + " INT, " + COLUMN_WORKOUT_PLAN_ID + " INT, " + COLUMN_EXERCISE_ID + " INT, FOREIGN KEY (" + COLUMN_WORKOUT_PLAN_ID + ") REFERENCES " + WORKOUT_PLAN_TABLE + " ( " + PLAN_ID + "), FOREIGN KEY (" + COLUMN_EXERCISE_ID + ") REFERENCES " + EXERCISE_TABLE + " (" + EXERCISE_ID + ") )";
+        String createWorkout = "CREATE TABLE " + WORKOUT_TABLE + " (" + WORKOUT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_REPETITIONS + " STRING, " + COLUMN_SETS + " INT, " + COLUMN_WORKOUT_PLAN_ID + " INT, " + COLUMN_EXERCISE_ID + " INT, FOREIGN KEY (" + COLUMN_WORKOUT_PLAN_ID + ") REFERENCES " + WORKOUT_PLAN_TABLE + " ( " + PLAN_ID + "), FOREIGN KEY (" + COLUMN_EXERCISE_ID + ") REFERENCES " + EXERCISE_TABLE + " (" + EXERCISE_ID + ") )";
         //table for the workout record
         String createWorkoutRecord = "CREATE TABLE " + WORKOUT_RECORD_TABLE + " (" + RECORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_RECORD_DATE + " DATE, " + COLUMN_RECORD_TIME + " TIME, " + COLUMN_RECORD_DURATION + " INT, " + COLUMN_WEIGHT_USED + " FLOAT, " + COLUMN_PERSON_ID + " INT, " + COLUMN_WORKOUT_ID + " INT, FOREIGN KEY (" + COLUMN_PERSON_ID + ") REFERENCES " + PERSON_TABLE + " ( " + COLUMN_ID + " ), FOREIGN KEY (" + COLUMN_WORKOUT_ID + ") REFERENCES " + WORKOUT_TABLE + " ( " + WORKOUT_ID + ") )";
         //table for the workout exercise
@@ -356,6 +359,36 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return exerciseList;
     }
 
+    public List<ExerciseModel> showSelectedExercises(List<String> categories) {
+        List<ExerciseModel> exerciseList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selection = COLUMN_WORKED_MUSCLES + " IN (" + TextUtils.join(",", Collections.nCopies(categories.size(), "?")) + ")";
+        String[] selectionArgs = categories.toArray(new String[0]);
+
+        String query = "SELECT * FROM " + EXERCISE_TABLE + " WHERE " + selection;
+        Cursor cursor = db.rawQuery(query, selectionArgs);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex(EXERCISE_ID));
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_EXERCISE_NAME));
+                String muscles = cursor.getString(cursor.getColumnIndex(COLUMN_WORKED_MUSCLES));
+                String description = cursor.getString(cursor.getColumnIndex(COLUMN_DESCRIPTION));
+
+                ExerciseModel exercise = new ExerciseModel(id, name, muscles, description);
+                exerciseList.add(exercise);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return exerciseList;
+    }
+
+
+
     public List<String> getAllMuscleGroups(){
         List<String> muscleGroupList=new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -374,4 +407,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
         return muscleGroupList;
     }
+
+    public int getLastPlanID() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int lastInsertedId = -1; // Default value if nothing is found
+
+        String query = "SELECT * FROM " + WORKOUT_PLAN_TABLE + " WHERE id = last_insert_rowid();";
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            lastInsertedId = cursor.getInt(0); // Retrieve the value from the cursor
+        }
+
+        cursor.close();
+        db.close();
+
+        return lastInsertedId;
+    }
+
 }
