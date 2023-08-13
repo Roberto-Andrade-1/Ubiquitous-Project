@@ -6,13 +6,13 @@ public class WorkoutModel {
 
     private int sets;
 
-    private int repetitions;
+    private String repetitions;
 
     private int planID;
 
     private int exerciseID;
 
-    public WorkoutModel(int id, int sets, int repetitions, int planID, int exerciseID) {
+    public WorkoutModel(int id, int sets, String repetitions, int planID, int exerciseID) {
         this.id = id;
         this.sets = sets;
         this.repetitions = repetitions;
@@ -39,11 +39,11 @@ public class WorkoutModel {
         this.sets = sets;
     }
 
-    public int getRepetitions() {
+    public String getRepetitions() {
         return repetitions;
     }
 
-    public void setRepetitions(int repetitions) {
+    public void setRepetitions(String repetitions) {
         this.repetitions = repetitions;
     }
 

@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import android.content.Intent;
 import android.media.metrics.EditingSession;
 import android.os.Bundle;
 import android.view.View;
@@ -64,9 +65,16 @@ public class CreateWorkoutPlan extends AppCompatActivity {
                     workoutPlanModel = new WorkoutPlanModel(-1,name, date);
                     dataBaseHelper.addWorkoutPlan(workoutPlanModel);
 
+                    dataBaseHelper.close();
+
+                    Intent intent = new Intent(CreateWorkoutPlan.this, Choose_exercise.class);
+                    intent.putStringArrayListExtra("selection", new ArrayList<>(selectedWorkedMuscles));
+                    startActivity(intent);
+
                 }
             }
         });
+
 
     }
 
