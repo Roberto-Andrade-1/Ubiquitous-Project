@@ -61,7 +61,7 @@ public class CreateWorkoutPlan extends AppCompatActivity {
                 else{
                     selectedWorkedMuscles=adapter.getSelectedMuscleGroups();
 
-                    workoutPlanModel=new WorkoutPlanModel(-1,name, date);
+                    workoutPlanModel = new WorkoutPlanModel(-1,name, date);
                     dataBaseHelper.addWorkoutPlan(workoutPlanModel);
 
                 }
