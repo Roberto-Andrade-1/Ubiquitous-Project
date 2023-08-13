@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class CreateWorkoutPlan extends AppCompatActivity {
     private RecyclerView recyclerViewMuscleGroup;
     private Button buttonCreatePlan;
     private MuscleGroupAdapter adapter;
+    private List<String> selectedWorkedMuscles;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,14 +53,17 @@ public class CreateWorkoutPlan extends AppCompatActivity {
                 String name = editTextPlanName.getText().toString();
                 LocalDate localDate= LocalDate.now();
 
-                Date date=Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
                 if (name.equals("")){
                     Toast.makeText(CreateWorkoutPlan.this,"Need a name for workout",Toast.LENGTH_SHORT).show();
                 }
                 else{
+                    selectedWorkedMuscles=adapter.getSelectedMuscleGroups();
+
                     workoutPlanModel=new WorkoutPlanModel(-1,name, date);
                     dataBaseHelper.addWorkoutPlan(workoutPlanModel);
+
                 }
             }
         });
