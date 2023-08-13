@@ -23,12 +23,11 @@
         android:hint="Enter Plan Name"
         android:layout_marginBottom="16dp"/>
 
-    <MultiAutoCompleteTextView
-        android:id="@+id/multiAutoCompleteTextViewMuscleGroups"
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Select Muscle Groups"
-        android:layout_marginBottom="16dp"/>
+        android:id="@+id/recyclerViewMuscleGroup"
+        />
 
 
     <Button
