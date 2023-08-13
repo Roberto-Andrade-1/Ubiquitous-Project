@@ -26,11 +26,12 @@ public class CreateWorkoutPlan extends AppCompatActivity {
         multiAutoCompleteTextViewMuscleGroups=findViewById(R.id.multiAutoCompleteTextViewMuscleGroups);
         buttonCreatePlan=findViewById(R.id.buttonCreatePlan);
 
-        List<String> allMuscleGroups;
+        List<String> allMuscleGroups= getAllMuscleGroupFromDatabase();
+
     }
 
     private List<String> getAllMuscleGroupFromDatabase(){
         DataBaseHelper dataBaseHelper= new DataBaseHelper(this);
-        return ;
+        return dataBaseHelper.getAllMuscleGroups();
     }
 }

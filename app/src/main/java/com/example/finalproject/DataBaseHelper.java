@@ -358,6 +358,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public List<String> getAllMuscleGroups(){
         List<String> muscleGroupList=new ArrayList<>();
-        
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT DISTINCT " + COLUMN_WORKED_MUSCLES +" FROM "+ EXERCISE_TABLE;
+        Cursor cursor = db.rawQuery(query,null);
+
+        if (cursor != null && cursor.moveToFirst()){
+            do {
+                String muscleGroup=cursor.getString(cursor.getColumnIndex(COLUMN_WORKED_MUSCLES));
+                muscleGroupList.add(muscleGroup);
+            }while (cursor.moveToNext());
+
+            cursor.close();
+        }
+        db.close();
+        return muscleGroupList;
     }
 }
