@@ -65,6 +65,7 @@ public class MuscleGroupAdapter extends RecyclerView.Adapter<MuscleGroupAdapter.
         }
     }
 
+
     public List<String> getSelectedMuscleGroups() {
         List<String> selected = new ArrayList<>();
         for (int i = 0; i < muscleGroups.size(); i++) {
