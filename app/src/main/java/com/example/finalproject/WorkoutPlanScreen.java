@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanAdapter.OnWorkoutPlanClickListener {
-    Button newWorkoutButton goBack;
+    Button newWorkoutButton, goBack;
 
     RecyclerView workoutPlans;
     WorkoutPlanAdapter adapter;
