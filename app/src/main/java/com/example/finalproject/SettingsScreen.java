@@ -17,7 +17,7 @@ public class SettingsScreen extends AppCompatActivity {
 
     TextView click;
 
-    Button saveButton;
+    Button saveButton, goBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,8 @@ public class SettingsScreen extends AppCompatActivity {
         setContentView(R.layout.activity_settings_screen);
 
         dataBaseHelper = new DataBaseHelper(this);
+
+        goBack = findViewById(R.id.goBack);
 
         PersonModel currentUser = DataBaseHelper.getCurrentUser(); // Get the current user
 
@@ -108,7 +110,14 @@ public class SettingsScreen extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-
         }
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SettingsScreen.this, RealMain.class);
+                startActivity(intent);
+            }
+        });
     }
 }

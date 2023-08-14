@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".Login"
+    android:background="@drawable/background_image"
+    >
 
     <EditText
         android:id="@+id/phoneNumberLogin"
@@ -12,18 +14,29 @@
         android:layout_height="60dp"
         android:layout_marginTop="148dp"
         android:ems="10"
+        android:fontFamily="@font/alata"
         android:hint="@string/PersonPhone"
         android:inputType="number"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColor="#FBF8F8"
+        android:textColorHint="#FBF8F8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="@string/PersonPhone" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="108dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="176dp"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:layout_marginBottom="264dp"
+        android:fontFamily="@font/alata"
         android:text="Login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,11 +48,57 @@
         android:layout_width="220dp"
         android:layout_height="60dp"
         android:ems="10"
+        android:fontFamily="@font/alata"
         android:hint="@string/PersonPassword"
         android:inputType="textPassword"
+        android:textColor="#F6F2F2"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColorHint="#F8F5F5"
         app:layout_constraintBottom_toTopOf="@+id/loginButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumberLogin"
-        app:layout_constraintVertical_bias="0.509" />
+        app:layout_constraintVertical_bias="0.274" />
+
+    <TextView
+        android:id="@+id/textForRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/alata"
+        android:text="Don't have an account?"
+        android:textColor="#FDFCFC"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textRegister"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintVertical_bias="0.089" />
+
+    <TextView
+        android:id="@+id/textRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:fontFamily="@font/alata"
+        android:text="@string/Register"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColor="#FB1717"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginButton"
+        app:layout_constraintVertical_bias="0.211" />
 </androidx.constraintlayout.widget.ConstraintLayout>

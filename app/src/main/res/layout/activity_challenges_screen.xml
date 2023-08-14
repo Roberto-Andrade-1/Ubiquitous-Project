@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChallengesScreen">
+    tools:context=".ChallengesScreen"
+    android:background="#403F3F">
 
     <TextView
         android:id="@+id/textView"
@@ -12,6 +13,12 @@
         android:layout_height="wrap_content"
         android:text="Challenge"
         android:textSize="30sp"
+        android:fontFamily="@font/alata"
+        android:textColor="@color/white"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,6 +55,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="4dp"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/white"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="6"
+            android:shadowRadius="5"
             android:id="@+id/exerciseNameChallenge"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -57,8 +70,13 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/white"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="6"
+            android:shadowRadius="5"
             android:id="@+id/exerciseMuscleChallenge"
-            android:textColor="@android:color/darker_gray"
             android:textSize="20sp" />
 
     </LinearLayout>
