@@ -48,7 +48,6 @@
             android:id="@+id/checkBoxExercise"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:buttonTint="@color/white"
             android:fontFamily="@font/alata"
             android:shadowColor="#7F000000"
             android:shadowDx="1"

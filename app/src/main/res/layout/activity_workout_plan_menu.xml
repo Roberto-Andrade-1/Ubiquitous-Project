@@ -10,28 +10,31 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Workout Plans"
-        android:textColor="@color/white"
+        android:layout_marginTop="32dp"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
         android:shadowDy="6"
         android:shadowRadius="5"
+        android:text="Workout Plans"
+        android:textColor="@color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewWorkoutPlan"
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:padding="14dp"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.135" />
@@ -51,4 +54,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerViewWorkoutPlan" />
+
+    <Button
+        android:id="@+id/goBackBt"
+        android:layout_width="56dp"
+        android:layout_height="47dp"
+        android:background="@drawable/arrow_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.307"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
 </androidx.constraintlayout.widget.ConstraintLayout>
