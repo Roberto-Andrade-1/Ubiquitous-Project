@@ -54,4 +54,10 @@
     <string name="ChooseExercise">Choose the exercices for your workout</string>
     <string name="ConfirmChoices">Confirm choices</string>
     <string name="ALL">ALL</string>
+    <string name="DailyIntake">Daily caloric intakes</string>
+    <string name="Cutting">Cutting:</string>
+    <string name="Maintenance">Maintenance:</string>
+    <string name="Bulking">Bulking:</string>
+    <string name="Calories">Calories</string>
+    <string name="TextCalories">Keep in mind that this is a recomended calory intake, it may vary from person to person and whether your doing a havier workout plan with more training days.</string>
 </resources>

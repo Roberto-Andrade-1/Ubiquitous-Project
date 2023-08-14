@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -483,5 +482,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
+    public double getCaloriesMale (PersonModel personModel){
 
+        double calories = (10 * personModel.getWeight()) + (6.25 * personModel.getHeight()) - (5 * personModel.getAge()) + 5 + 300;
+
+        return calories;
+    }
+
+    public double getCaloriesFemale (PersonModel personModel){
+
+        double calories = (10 * personModel.getWeight()) + (6.25 * personModel.getHeight()) - (5 * personModel.getAge()) - 161 + 200;
+
+        return calories;
+    }
 }

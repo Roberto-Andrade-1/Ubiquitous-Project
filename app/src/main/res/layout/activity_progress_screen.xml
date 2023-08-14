@@ -4,6 +4,155 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProgressScreen">
+    tools:context=".WorkoutScreen"
+    android:background="#403F3F">
+
+
+    <TextView
+        android:id="@+id/dailyIntake"
+        android:layout_width="234dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/alata"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="@string/DailyIntake"
+        android:textColor="#FBFBFB"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cutting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="94dp"
+        android:fontFamily="@font/alata"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="@string/Cutting"
+        android:textColor="#FBFBFB"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/maintenance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dailyIntake"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/maintenance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/alata"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="@string/Maintenance"
+        android:textColor="#FBFBFB"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/bulking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.224"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/bulking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="448dp"
+        android:fontFamily="@font/alata"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="@string/Bulking"
+        android:textColor="#FBFBFB"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/cuttingIntake"
+        android:layout_width="232dp"
+        android:layout_height="23dp"
+        android:fontFamily="@font/alata"
+        android:hint="calories"
+        android:inputType="numberSigned"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColor="#FBFBFB"
+        app:layout_constraintBottom_toTopOf="@+id/maintenanceIntake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cutting"
+        app:layout_constraintTop_toBottomOf="@+id/dailyIntake"
+        app:layout_constraintVertical_bias="0.566" />
+
+    <TextView
+        android:id="@+id/maintenanceIntake"
+        android:layout_width="188dp"
+        android:layout_height="27dp"
+        android:layout_marginBottom="56dp"
+        android:fontFamily="@font/alata"
+        android:hint="calories"
+        android:inputType="numberSigned"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColor="#FBFBFB"
+        app:layout_constraintBottom_toTopOf="@+id/bulkingIntake"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.843"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/bulkingIntake"
+        android:layout_width="190dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="448dp"
+        android:fontFamily="@font/alata"
+        android:hint="calories"
+        android:inputType="numberSigned"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColor="#FBFBFB"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textCalories"
+        android:layout_width="299dp"
+        android:layout_height="123dp"
+        android:layout_marginTop="142dp"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="@string/TextCalories"
+        android:textAlignment="center"
+        android:textColor="#FBFBFB"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bulking"
+        app:layout_constraintVertical_bias="0.076" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

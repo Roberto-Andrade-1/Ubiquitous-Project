@@ -12,9 +12,9 @@
     <string name="SignUp">Cadastrar-se</string>
     <string name="ChallengeButton">Desafios</string>
     <string name="WorkoutButton">Treino</string>
-    <string name="ExercisesButton">Exercicios</string>
+    <string name="ExercisesButton">Exercícios</string>
     <string name="ProgressButton">Progresso</string>
-    <string name="SettingsButton">Defenições</string>
+    <string name="SettingsButton">Definições</string>
     <string name="ChestText">Peito</string>
     <string name="ArmsText">Braços</string>
     <string name="LegsText">Pernas</string>
@@ -36,7 +36,13 @@
     <string name="CreateNewPlan">Criar novo plano de treino</string>
     <string name="PlanName">Introduza o nome do plano</string>
     <string name="CreatePlan">Criar plano</string>
-    <string name="ChooseExercise">Selecione os exercicios para o seu treino</string>
+    <string name="ChooseExercise">Selecione os exercícios para o seu treino</string>
     <string name="ConfirmChoices">Confirmar escolhas</string>
     <string name="ALL">Todos</string>
+    <string name="DailyIntake">Calorias diarias necessárias</string>
+    <string name="Cutting">Cortar:</string>
+    <string name="Maintenance">"Manter: "</string>
+    <string name="Bulking">Bulking:</string>
+    <string name="Calories">Calorias</string>
+    <string name="TextCalories">Esteja ciente que isto é uma quantidade recomendada de calorias necessárias, pode variar de pessoa para pessoa e se está a fazer um plano mais pesado e a treinar mais dias por semana.</string>
 </resources>
