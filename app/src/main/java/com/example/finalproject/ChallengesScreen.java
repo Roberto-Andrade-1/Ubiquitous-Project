@@ -2,8 +2,11 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.style.IconMarginSpan;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ public class ChallengesScreen extends AppCompatActivity {
 
     private TextView exercise, muscleGroup;
     private ImageView exerciseImage;
+    private Button goBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +28,7 @@ public class ChallengesScreen extends AppCompatActivity {
         exercise=findViewById(R.id.exerciseNameChallenge);
         muscleGroup=findViewById(R.id.exerciseMuscleChallenge);
         exerciseImage=findViewById(R.id.exerciseImageChallenge);
+        goBack = findViewById(R.id.goBackB);
 
         ExerciseModel randExercise= randomExercise();
 
@@ -42,6 +47,14 @@ public class ChallengesScreen extends AppCompatActivity {
                     .load(imageResource)
                     .into(exerciseImage);
         }
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChallengesScreen.this, RealMain.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private ExerciseModel randomExercise(){
