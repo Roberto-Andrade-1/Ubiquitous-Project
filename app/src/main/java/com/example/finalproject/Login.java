@@ -9,12 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
     Button logIN;
     EditText phone, password;
+    TextView register;
     DataBaseHelper dataBaseHelper;
 
     @Override
@@ -25,6 +27,7 @@ public class Login extends AppCompatActivity {
         logIN = findViewById(R.id.loginButton);
         phone = findViewById(R.id.phoneNumberLogin);
         password = findViewById(R.id.passwordLogin);
+        register = findViewById(R.id.textRegister);
 
         dataBaseHelper = new DataBaseHelper(this);
 
@@ -54,6 +57,14 @@ public class Login extends AppCompatActivity {
                         Toast.makeText(Login.this, "Need to register", Toast.LENGTH_SHORT).show();
                     }
                 }
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Login.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 

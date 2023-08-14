@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     Button personRegister;
     EditText personName, personSurname, personPhone, personAge, personWeight, personHeight, personPassword;
-
+    TextView log;
     DataBaseHelper dataBaseHelper;
 
     @Override
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         personWeight = findViewById(R.id.personWeight);
         personHeight = findViewById(R.id.personHeigth);
         personPassword = findViewById(R.id.personPassword);
+        log = findViewById(R.id.textLogIn);
 
         dataBaseHelper = new DataBaseHelper(this);
 
@@ -72,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
+            }
+        });
+
+        log.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, Login.class);
+                startActivity(intent);
             }
         });
     }

@@ -6,13 +6,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".CreateWorkoutPlan">
+    tools:context=".CreateWorkoutPlan"
+    android:background="#403F3F">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create New Workout Plan"
         android:textSize="24sp"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColor="@color/white"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"/>
 
@@ -20,12 +26,19 @@
         android:id="@+id/editTextPlanName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:hint="Enter Plan Name"
-        android:layout_marginBottom="16dp"/>
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:id="@+id/recyclerViewMuscleGroup"
         />
 
@@ -35,5 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
         android:text="Create Plan" />
 </LinearLayout>
