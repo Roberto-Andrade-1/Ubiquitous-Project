@@ -50,6 +50,8 @@ public class FeedbackScreen extends AppCompatActivity {
                     dataBaseHelper.addFeedback(feedbackModel);
 
                     Toast.makeText(FeedbackScreen.this, "Sent with success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(FeedbackScreen.this, SettingsScreen.class);
+                    startActivity(intent);
                 }
 
             }

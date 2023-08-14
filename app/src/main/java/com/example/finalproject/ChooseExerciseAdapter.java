@@ -90,7 +90,7 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
 
     public List<ExerciseModel> getSelectedExercises(){
         List<ExerciseModel> selected = new ArrayList<>();
-        for (int i = 0; i<exercises.size(); i++){
+        for (int i = 0; i < exercises.size(); i++){
             if(selectedExercises.get(i)){
                 selected.add(exercises.get(i));
             }
