@@ -23,20 +23,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/white"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="6"
+            android:shadowRadius="5"
             android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/chooseExerciseMuscles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/white"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="6"
+            android:shadowRadius="5"
             android:textSize="14sp"
-            android:textColor="@android:color/darker_gray"/>
+            />
 
         <CheckBox
             android:id="@+id/checkBoxExercise"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            android:buttonTint="@color/white"
+            android:fontFamily="@font/alata"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="6"
+            android:shadowRadius="5"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </LinearLayout>

@@ -3,13 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#403F3F">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Workout Plans"
+        android:textColor="@color/white"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -36,6 +42,10 @@
         android:layout_height="wrap_content"
         android:text="New Workout Plan"
         android:textSize="20sp"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
         android:backgroundTint="#BD1212"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
