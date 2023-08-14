@@ -3,7 +3,6 @@
     <string name="PersonName">Name</string>
     <string name="PersonSurname">Surname</string>
     <string name="PersonPhone">Phone</string>
-    <string name="PersonAge">Age</string>
     <string name="PersonWeight">Weight</string>
     <string name="PersonHeight">Height</string>
     <string name="PersonPassword">Password</string>
@@ -37,4 +36,22 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="SL_text">Here it\'s where your life will change, joins us now to forget your older self</string>
+    <string name="PersonAge">Age</string>
+    <string name="alreadyHaveAccount">Already have an account?</string>
+    <string name="dontHaveAccount">Don\'t have an account?</string>
+    <string name="GiveFeedback">Give us your feedback!!</string>
+    <string name="Subject">Subject</string>
+    <string name="Description">Description</string>
+    <string name="Submit">Submit</string>
+    <string name="Save">Save</string>
+    <string name="giveFeedback">Want to give us your feedback?</string>
+    <string name="ClickHere">Click here</string>
+    <string name="WorkoutPlans">Workout Plans</string>
+    <string name="NewWorkout">New workout plan</string>
+    <string name="CreateNewPlan">Create new workout plan</string>
+    <string name="PlanName">Enter plan name</string>
+    <string name="CreatePlan">Create plan</string>
+    <string name="ChooseExercise">Choose the exercices for your workout</string>
+    <string name="ConfirmChoices">Confirm choices</string>
+    <string name="ALL">ALL</string>
 </resources>

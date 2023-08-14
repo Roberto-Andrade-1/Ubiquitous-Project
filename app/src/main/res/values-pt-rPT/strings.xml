@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalProject</string>
+    <string name="PersonName">Nome</string>
+    <string name="PersonSurname">Sobrenome</string>
+    <string name="PersonPhone">Telemóvel</string>
+    <string name="PersonAge">Idade</string>
+    <string name="PersonWeight">Peso</string>
+    <string name="PersonHeight">Altura</string>
+    <string name="PersonPassword">Palavra-Passe</string>
+    <string name="Register">Registar-se</string>
+    <string name="SignUp">Cadastrar-se</string>
+    <string name="ChallengeButton">Desafios</string>
+    <string name="WorkoutButton">Treino</string>
+    <string name="ExercisesButton">Exercicios</string>
+    <string name="ProgressButton">Progresso</string>
+    <string name="SettingsButton">Defenições</string>
+    <string name="ChestText">Peito</string>
+    <string name="ArmsText">Braços</string>
+    <string name="LegsText">Pernas</string>
+    <string name="BackText">Costas</string>
+    <string name="CoreText">Abdominais</string>
+    <string name="log_in">Log In</string>
+    <string name="SL_text">Aqui é onde a tua vida muda, junta-te a nós e esquece o teu eu do passado!!</string>
+    <string name="alreadyHaveAccount">Já tem uma conta?</string>
+    <string name="dontHaveAccount">Ainda não tem uma conta?</string>
+    <string name="GiveFeedback">Dê o seu feedback!!</string>
+    <string name="Subject">Titulo</string>
+    <string name="Description">Descrição</string>
+    <string name="Submit">Submeter</string>
+    <string name="Save">Salvar</string>
+    <string name="giveFeedback">Quer dar o seu feedback?</string>
+    <string name="ClickHere">Clique aqui</string>
+    <string name="WorkoutPlans">Planos de treino</string>
+    <string name="NewWorkout">Novo plano de treino</string>
+    <string name="CreateNewPlan">Criar novo plano de treino</string>
+    <string name="PlanName">Introduza o nome do plano</string>
+    <string name="CreatePlan">Criar plano</string>
+    <string name="ChooseExercise">Selecione os exercicios para o seu treino</string>
+    <string name="ConfirmChoices">Confirmar escolhas</string>
+    <string name="ALL">Todos</string>
+</resources>
