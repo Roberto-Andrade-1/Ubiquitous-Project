@@ -14,7 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanAdapter.OnWorkoutPlanClickListener {
-    Button newWorkoutButton;
+    Button newWorkoutButton goBack;
+
     RecyclerView workoutPlans;
     WorkoutPlanAdapter adapter;
     @Override
@@ -23,6 +24,7 @@ public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanA
         setContentView(R.layout.activity_workout_plan_menu);
 
         newWorkoutButton=findViewById(R.id.newWorkoutPlanButton);
+        goBack = findViewById(R.id.goBackBt);
 
         workoutPlans=findViewById(R.id.recyclerViewWorkoutPlan);
         workoutPlans.setLayoutManager(new LinearLayoutManager(this));
@@ -38,6 +40,14 @@ public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanA
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(WorkoutPlanScreen.this,CreateWorkoutPlan.class);
+                startActivity(intent);
+            }
+        });
+
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (WorkoutPlanScreen.this, RealMain.class);
                 startActivity(intent);
             }
         });
