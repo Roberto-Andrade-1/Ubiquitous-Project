@@ -21,17 +21,13 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
 
     private List<ExerciseModel> exercises;
     private List<Boolean> selectedExercises;
-    private Context context;
-    private ExerciseSelectionCallback selectionCallback;
 
-    public ChooseExerciseAdapter(Context context, List<ExerciseModel> exercises, ExerciseSelectionCallback callback) {
-        this.context = context;
+    public ChooseExerciseAdapter(List<ExerciseModel> exercises) {
         this.exercises = exercises;
         selectedExercises = new ArrayList<>(exercises.size());
         for (int i = 0; i < exercises.size(); i++) {
             selectedExercises.add(false);
         }
-        this.selectionCallback = callback;
     }
 
     @NonNull
@@ -72,13 +68,13 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
             exerciseName.setText(currentExercise.getExerciseName());
             exerciseWorkedMuscle.setText(currentExercise.getWorkedMuscles());
 
-            int gifResource = context.getResources().getIdentifier(
+            int gifResource = exerciseImage.getContext().getResources().getIdentifier(
                     currentExercise.getExerciseName().toLowerCase().replace("-", "_").replace(" ", "_"),
                     "drawable",
-                    context.getPackageName()
+                    exerciseImage.getContext().getPackageName()
             );
 
-            Glide.with(context)
+            Glide.with(exerciseImage.getContext())
                     .asGif()
                     .load(gifResource)
                     .transition(DrawableTransitionOptions.withCrossFade())
@@ -90,9 +86,6 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
                 @Override
                 public void onClick(View v) {
                     selectedExercises.set(position, checkBox.isChecked());
-                    if (selectionCallback != null) {
-                        selectionCallback.onExerciseSelected(position, checkBox.isChecked());
-                    }
                 }
             });
         }
@@ -106,9 +99,5 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
             }
         }
         return selected;
-    }
-
-    public interface ExerciseSelectionCallback {
-        void onExerciseSelected(int position, boolean isSelected);
     }
 }
