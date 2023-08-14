@@ -454,6 +454,34 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return lastInsertedId;
     }
 
+    public List<ExerciseModel> getAllExercisesFromWorkout(int planId) {
+        List<ExerciseModel> res = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT " + COLUMN_REPETITIONS + ", " + COLUMN_EXERCISE_ID + ", " +
+                "EXERCISE_TABLE.EXERCISE_NAME, EXERCISE_TABLE.WORKED_MUSCLES " +
+                "FROM " + WORKOUT_TABLE +
+                " INNER JOIN " + EXERCISE_TABLE + " ON " + "WORKOUT_TABLE.COLUMN_EXERCISE_ID = EXERCISE_TABLE.EXERCISE_ID " +
+                "WHERE WORKOUT_PLAN_ID = " + planId;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                int exerciseId = cursor.getInt(cursor.getColumnIndex(COLUMN_EXERCISE_ID));
+                String exerciseName = cursor.getString(cursor.getColumnIndex(COLUMN_EXERCISE_NAME));
+                String workedMuscles = cursor.getString(cursor.getColumnIndex(COLUMN_WORKED_MUSCLES));
+                String repetitions = cursor.getString(cursor.getColumnIndex(COLUMN_REPETITIONS));
+
+                ExerciseModel exercise = new ExerciseModel(exerciseId, exerciseName, workedMuscles, repetitions);
+                res.add(exercise);
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+        db.close();
+        return res;
+    }
 
 
 }

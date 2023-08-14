@@ -1,0 +1,65 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="30dp">
+
+    <ImageView
+        android:id="@+id/workoutPlanExerciseImage"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:contentDescription="Exercise Image"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="16dp">
+
+        <TextView
+            android:id="@+id/workoutPlanExerciseName"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/white"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="6"
+            android:shadowRadius="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/workoutPlanExerciseMuscles"
+            android:layout_width="wrap_content"
+            android:fontFamily="@font/alata"
+            android:textColor="@color/white"
+            android:shadowColor="#7F000000"
+            android:shadowDx="1"
+            android:shadowDy="6"
+            android:shadowRadius="5"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/workoutPlanSets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other Text 1"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            />
+
+        <TextView
+            android:id="@+id/workoutPlanRepetitions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Other Text 2"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>
