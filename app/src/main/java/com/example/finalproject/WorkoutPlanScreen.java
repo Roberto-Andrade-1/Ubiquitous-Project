@@ -2,6 +2,7 @@ package com.example.finalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -12,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class WorkoutPlanScreen extends AppCompatActivity {
+public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanAdapter.OnWorkoutPlanClickListener {
     Button newWorkoutButton;
     RecyclerView workoutPlans;
     WorkoutPlanAdapter adapter;
@@ -26,10 +27,12 @@ public class WorkoutPlanScreen extends AppCompatActivity {
         workoutPlans=findViewById(R.id.recyclerViewWorkoutPlan);
         workoutPlans.setLayoutManager(new LinearLayoutManager(this));
 
-        List<WorkoutPlanModel> allWorkoutPlans = getAllWorkoutPlansFromDatabse();
-        adapter=new WorkoutPlanAdapter(allWorkoutPlans);
-        workoutPlans.setAdapter(adapter);
+        List<WorkoutPlanModel> allWorkoutPlans = getAllWorkoutPlansFromDatabase();
 
+        adapter=new WorkoutPlanAdapter(allWorkoutPlans);
+        adapter.setOnWorkoutPlanClickListener(this);
+
+        workoutPlans.setAdapter(adapter);
 
         newWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +43,16 @@ public class WorkoutPlanScreen extends AppCompatActivity {
         });
     }
 
-    private List<WorkoutPlanModel> getAllWorkoutPlansFromDatabse(){
+    @Override
+    public void onWorkoutPlanClick(WorkoutPlanModel workoutPlan) {
+        Log.d("DEBUG", "Clicked on workout plan: " + workoutPlan.getName());
+        Intent intent = new Intent(WorkoutPlanScreen.this, WorkoutPlanExercises.class);
+        intent.putExtra("WORKOUT_PLAN_ID", workoutPlan.getId());
+        startActivity(intent);
+    }
+
+
+    private List<WorkoutPlanModel> getAllWorkoutPlansFromDatabase(){
         DataBaseHelper dataBaseHelper=new DataBaseHelper(this);
         return dataBaseHelper.getAllWorkoutPlans();
     }
