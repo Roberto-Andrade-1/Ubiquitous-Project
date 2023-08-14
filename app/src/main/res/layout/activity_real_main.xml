@@ -9,24 +9,27 @@
 
     <Button
         android:id="@+id/settingsButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/settings"
-        android:text="@string/SettingsButton"
-        android:textColor="#00000000"
-        app:layout_constraintBottom_toTopOf="@+id/challengesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/alata"
+        android:shadowColor="#7F000000"
+        android:shadowDx="1"
+        android:shadowDy="6"
+        android:shadowRadius="5"
+        android:text="Settings"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.42000002" />
+        app:layout_constraintTop_toBottomOf="@+id/workoutButton" />
 
     <Button
         android:id="@+id/challengesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="132dp"
+        android:elevation="10dp"
         android:fontFamily="@font/alata"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
@@ -36,22 +39,23 @@
         android:textColor="#FBFBFB"
         android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/exercisesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
         android:fontFamily="@font/alata"
-        android:text="@string/ExercisesButton"
-        android:textSize="32sp"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
         android:shadowDy="6"
         android:shadowRadius="5"
+        android:text="@string/ExercisesButton"
         android:textColor="#FBFBFB"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toTopOf="@+id/settingsButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/workoutButton"
         app:layout_constraintTop_toBottomOf="@+id/challengesButton" />
@@ -60,37 +64,17 @@
         android:id="@+id/workoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        android:layout_marginBottom="128dp"
         android:fontFamily="@font/alata"
-        android:text="@string/WorkoutButton"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
         android:shadowDy="6"
         android:shadowRadius="5"
+        android:text="@string/WorkoutButton"
         android:textColor="#FBFBFB"
         android:textSize="32sp"
-        app:layout_constraintBottom_toTopOf="@+id/progressButton"
+        app:layout_constraintBottom_toTopOf="@+id/settingsButton"
         app:layout_constraintEnd_toStartOf="@+id/exercisesButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/challengesButton"
-        app:layout_constraintVertical_bias="0.392" />
-
-    <Button
-        android:id="@+id/progressButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/alata"
-        android:text="@string/ProgressButton"
-        android:textSize="32sp"
-        android:shadowColor="#7F000000"
-        android:shadowDx="1"
-        android:shadowDy="6"
-        android:shadowRadius="5"
-        android:textColor="#FBFBFB"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exercisesButton" />
+        app:layout_constraintTop_toBottomOf="@+id/challengesButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
