@@ -75,7 +75,6 @@ public class CreateWorkoutPlan extends AppCompatActivity {
             }
         });
 
-
     }
 
     private List<String> getAllMuscleGroupFromDatabase(){
