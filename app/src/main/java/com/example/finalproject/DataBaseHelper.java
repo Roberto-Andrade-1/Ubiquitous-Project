@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
@@ -387,20 +388,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return exerciseList;
     }
 
-
-
-    public List<String> getAllMuscleGroups(){
-        List<String> muscleGroupList=new ArrayList<>();
+    public List<String> getAllMuscleGroups() {
+        List<String> muscleGroupList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String query = "SELECT DISTINCT " + COLUMN_WORKED_MUSCLES +" FROM "+ EXERCISE_TABLE;
-        Cursor cursor = db.rawQuery(query,null);
+        String query = "SELECT DISTINCT " + COLUMN_WORKED_MUSCLES + " FROM " + EXERCISE_TABLE;
+        Cursor cursor = db.rawQuery(query, null);
 
-        if (cursor != null && cursor.moveToFirst()){
+        if (cursor != null && cursor.moveToFirst()) {
             do {
-                String muscleGroup=cursor.getString(cursor.getColumnIndex(COLUMN_WORKED_MUSCLES));
+                String muscleGroup = cursor.getString(cursor.getColumnIndex(COLUMN_WORKED_MUSCLES));
                 muscleGroupList.add(muscleGroup);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
 
             cursor.close();
         }
@@ -408,15 +407,45 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return muscleGroupList;
     }
 
+    public List<WorkoutPlanModel> getAllWorkoutPlans(){
+        List<WorkoutPlanModel> res=new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT DISTINCT " + WORKOUT_PLAN_TABLE + ".*, " + WORKOUT_TABLE + "." + COLUMN_WORKOUT_PLAN_ID +
+                " FROM " + WORKOUT_PLAN_TABLE +
+                " INNER JOIN " + WORKOUT_TABLE + " ON " + WORKOUT_PLAN_TABLE + "." + PLAN_ID + " = " + WORKOUT_TABLE + "." + COLUMN_WORKOUT_PLAN_ID;
+
+        Cursor cursor= db.rawQuery(query,null);
+
+        if (cursor!=null && cursor.moveToFirst()){
+            do {
+                int id= cursor.getInt(cursor.getColumnIndex(PLAN_ID));
+                String name= cursor.getString(cursor.getColumnIndex(COLUMN_PLAN_NAME));
+                String creationDateStr = cursor.getString(cursor.getColumnIndex(COLUMN_CREATION_DATE));
+
+                Date date = new Date(creationDateStr);
+
+
+                WorkoutPlanModel workoutPlanModel=new WorkoutPlanModel(id,name,date);
+                res.add(workoutPlanModel);
+
+            }while (cursor.moveToNext());
+
+            cursor.close();
+        }
+        db.close();
+        return res;
+    }
+
     public int getLastPlanID() {
         SQLiteDatabase db = this.getReadableDatabase();
-        int lastInsertedId = -1; // Default value if nothing is found
+        int lastInsertedId = -1;
 
-        String query = "SELECT * FROM " + WORKOUT_PLAN_TABLE + " WHERE id = last_insert_rowid();";
+        String query = "SELECT " + PLAN_ID + " FROM " + WORKOUT_PLAN_TABLE + " ORDER BY " + PLAN_ID + " DESC LIMIT 1;";
         Cursor cursor = db.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
-            lastInsertedId = cursor.getInt(0); // Retrieve the value from the cursor
+            lastInsertedId = cursor.getInt(0);
         }
 
         cursor.close();
@@ -424,5 +453,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return lastInsertedId;
     }
+
+
 
 }

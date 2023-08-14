@@ -15,7 +15,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAdapter.ChooseViewHolder> {
@@ -23,13 +22,17 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
     private List<ExerciseModel> exercises;
     private List<Boolean> selectedExercises;
     private Context context;
+    private ExerciseSelectionCallback selectionCallback;
 
-    public ChooseExerciseAdapter(Context context, List<ExerciseModel> exercises){
-        this.context=context;
+    public ChooseExerciseAdapter(Context context, List<ExerciseModel> exercises, ExerciseSelectionCallback callback) {
+        this.context = context;
         this.exercises = exercises;
-        selectedExercises= new ArrayList<>(Collections.nCopies(exercises.size(),false));
+        selectedExercises = new ArrayList<>(exercises.size());
+        for (int i = 0; i < exercises.size(); i++) {
+            selectedExercises.add(false);
+        }
+        this.selectionCallback = callback;
     }
-
 
     @NonNull
     @Override
@@ -41,31 +44,7 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
 
     @Override
     public void onBindViewHolder(@NonNull ChooseViewHolder holder, int position) {
-        ExerciseModel currentExercise = exercises.get(position);
-
-        holder.exerciseName.setText(currentExercise.getExerciseName());
-        holder.exerciseWorkedMuscle.setText(currentExercise.getWorkedMuscles());
-
-        int gifResource = context.getResources().getIdentifier(
-                currentExercise.getExerciseName().toLowerCase().replace("-", "_").replace(" ", "_"),
-                "drawable",
-                context.getPackageName()
-        );
-
-        Glide.with(context)
-                .asGif()
-                .load(gifResource)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(holder.exerciseImage);
-
-        holder.checkBox.setChecked(selectedExercises.get(position));
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                selectedExercises.set(position, !selectedExercises.get(position));
-                notifyDataSetChanged();
-            }
-        });
+        holder.bind(position);
     }
 
     @Override
@@ -73,7 +52,7 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
         return exercises.size();
     }
 
-    public class ChooseViewHolder  extends RecyclerView.ViewHolder{
+    public class ChooseViewHolder extends RecyclerView.ViewHolder {
         CheckBox checkBox;
         TextView exerciseName;
         TextView exerciseWorkedMuscle;
@@ -81,20 +60,55 @@ public class ChooseExerciseAdapter extends RecyclerView.Adapter<ChooseExerciseAd
 
         public ChooseViewHolder(@NonNull View itemView) {
             super(itemView);
-            checkBox=itemView.findViewById(R.id.checkBoxExercise);
-            exerciseName=itemView.findViewById(R.id.chooseExerciseName);
-            exerciseWorkedMuscle=itemView.findViewById(R.id.chooseExerciseMuscles);
-            exerciseImage=itemView.findViewById(R.id.chooseExerciseImage);
+            checkBox = itemView.findViewById(R.id.checkBoxExercise);
+            exerciseName = itemView.findViewById(R.id.chooseExerciseName);
+            exerciseWorkedMuscle = itemView.findViewById(R.id.chooseExerciseMuscles);
+            exerciseImage = itemView.findViewById(R.id.chooseExerciseImage);
+        }
+
+        public void bind(final int position) {
+            ExerciseModel currentExercise = exercises.get(position);
+
+            exerciseName.setText(currentExercise.getExerciseName());
+            exerciseWorkedMuscle.setText(currentExercise.getWorkedMuscles());
+
+            int gifResource = context.getResources().getIdentifier(
+                    currentExercise.getExerciseName().toLowerCase().replace("-", "_").replace(" ", "_"),
+                    "drawable",
+                    context.getPackageName()
+            );
+
+            Glide.with(context)
+                    .asGif()
+                    .load(gifResource)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(exerciseImage);
+
+            checkBox.setChecked(selectedExercises.get(position));
+
+            checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    selectedExercises.set(position, checkBox.isChecked());
+                    if (selectionCallback != null) {
+                        selectionCallback.onExerciseSelected(position, checkBox.isChecked());
+                    }
+                }
+            });
         }
     }
 
-    public List<ExerciseModel> getSelectedExercises(){
+    public List<ExerciseModel> getSelectedExercises() {
         List<ExerciseModel> selected = new ArrayList<>();
-        for (int i = 0; i<exercises.size(); i++){
-            if(selectedExercises.get(i)){
+        for (int i = 0; i < exercises.size(); i++) {
+            if (selectedExercises.get(i)) {
                 selected.add(exercises.get(i));
             }
         }
         return selected;
+    }
+
+    public interface ExerciseSelectionCallback {
+        void onExerciseSelected(int position, boolean isSelected);
     }
 }
