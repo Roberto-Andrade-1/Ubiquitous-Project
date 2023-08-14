@@ -7,11 +7,15 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 public class WorkoutPlanScreen extends AppCompatActivity {
     Button newWorkoutButton, goBack;
     RecyclerView workoutPlans;
+    WorkoutPlanAdapter adapter;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +23,14 @@ public class WorkoutPlanScreen extends AppCompatActivity {
 
         newWorkoutButton=findViewById(R.id.newWorkoutPlanButton);
         goBack = findViewById(R.id.goBackBt);
+
+        workoutPlans=findViewById(R.id.recyclerViewWorkoutPlan);
+        workoutPlans.setLayoutManager(new LinearLayoutManager(this));
+
+        List<WorkoutPlanModel> allWorkoutPlans = getAllWorkoutPlansFromDatabse();
+        adapter=new WorkoutPlanAdapter(allWorkoutPlans);
+        workoutPlans.setAdapter(adapter);
+
 
         newWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,5 +47,10 @@ public class WorkoutPlanScreen extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private List<WorkoutPlanModel> getAllWorkoutPlansFromDatabse(){
+        DataBaseHelper dataBaseHelper=new DataBaseHelper(this);
+        return dataBaseHelper.getAllWorkoutPlans();
     }
 }
