@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/dailyIntake"
         android:layout_width="234dp"
-        android:layout_height="33dp"
+        android:layout_height="48dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/alata"
         android:shadowColor="#7F000000"
@@ -27,9 +27,8 @@
 
     <TextView
         android:id="@+id/cutting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
+        android:layout_width="57dp"
+        android:layout_height="28dp"
         android:fontFamily="@font/alata"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
@@ -39,17 +38,14 @@
         android:textColor="#FBFBFB"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/maintenance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintEnd_toStartOf="@+id/cuttingIntake"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dailyIntake"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/dailyIntake" />
 
     <TextView
         android:id="@+id/maintenance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_width="94dp"
+        android:layout_height="29dp"
         android:fontFamily="@font/alata"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
@@ -59,15 +55,14 @@
         android:textColor="#FBFBFB"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/bulking"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.224"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/maintenanceIntake"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cutting" />
 
     <TextView
         android:id="@+id/bulking"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="448dp"
+        android:layout_width="59dp"
+        android:layout_height="29dp"
         android:fontFamily="@font/alata"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
@@ -76,15 +71,15 @@
         android:text="@string/Bulking"
         android:textColor="#FBFBFB"
         android:textSize="15sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.198"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/textCalories"
+        app:layout_constraintEnd_toStartOf="@+id/bulkingIntake"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/maintenance" />
 
     <TextView
         android:id="@+id/cuttingIntake"
-        android:layout_width="232dp"
-        android:layout_height="23dp"
+        android:layout_width="233dp"
+        android:layout_height="29dp"
         android:fontFamily="@font/alata"
         android:hint="calories"
         android:inputType="numberSigned"
@@ -95,15 +90,14 @@
         android:textColor="#FBFBFB"
         app:layout_constraintBottom_toTopOf="@+id/maintenanceIntake"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.976"
         app:layout_constraintStart_toEndOf="@+id/cutting"
-        app:layout_constraintTop_toBottomOf="@+id/dailyIntake"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintTop_toBottomOf="@+id/dailyIntake" />
 
     <TextView
         android:id="@+id/maintenanceIntake"
         android:layout_width="188dp"
         android:layout_height="27dp"
-        android:layout_marginBottom="56dp"
         android:fontFamily="@font/alata"
         android:hint="calories"
         android:inputType="numberSigned"
@@ -112,16 +106,15 @@
         android:shadowDy="6"
         android:shadowRadius="5"
         android:textColor="#FBFBFB"
+        app:layout_constraintTop_toBottomOf="@+id/cuttingIntake"
         app:layout_constraintBottom_toTopOf="@+id/bulkingIntake"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/maintenance" />
 
     <TextView
         android:id="@+id/bulkingIntake"
-        android:layout_width="190dp"
-        android:layout_height="26dp"
-        android:layout_marginBottom="448dp"
+        android:layout_width="188dp"
+        android:layout_height="31dp"
         android:fontFamily="@font/alata"
         android:hint="calories"
         android:inputType="numberSigned"
@@ -130,16 +123,15 @@
         android:shadowDy="6"
         android:shadowRadius="5"
         android:textColor="#FBFBFB"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textCalories"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/bulking"
+        app:layout_constraintTop_toBottomOf="@+id/maintenanceIntake" />
 
     <TextView
         android:id="@+id/textCalories"
         android:layout_width="299dp"
         android:layout_height="123dp"
-        android:layout_marginTop="142dp"
         android:shadowColor="#7F000000"
         android:shadowDx="1"
         android:shadowDy="6"
@@ -151,8 +143,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bulking"
-        app:layout_constraintVertical_bias="0.076" />
+        app:layout_constraintTop_toBottomOf="@+id/bulking" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="56dp"
+        android:layout_height="47dp"
+        android:background="@drawable/arrow_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dailyIntake"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

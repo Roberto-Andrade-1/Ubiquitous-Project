@@ -49,6 +49,7 @@ public class Login extends AppCompatActivity {
                         PersonModel currentUser = dataBaseHelper.getUser(phon);
                         dataBaseHelper.setCurrentUser(currentUser);
 
+                        dataBaseHelper.close();
 
                         Intent intent = new Intent (Login.this, RealMain.class);
 
@@ -69,4 +70,11 @@ public class Login extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        dataBaseHelper.close(); // Close the database when the activity is destroyed
+    }
+
 }
