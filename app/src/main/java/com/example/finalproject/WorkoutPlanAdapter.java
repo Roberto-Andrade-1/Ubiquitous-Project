@@ -4,6 +4,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,15 +16,16 @@ import java.util.List;
 public class WorkoutPlanAdapter extends RecyclerView.Adapter<WorkoutPlanAdapter.WorkoutPlanViewHolder>{
 
     private List<WorkoutPlanModel> workoutPlans;
-
+    private DataBaseHelper dataBaseHelper;
     private OnWorkoutPlanClickListener listener;
 
     public void setOnWorkoutPlanClickListener(OnWorkoutPlanClickListener listener) {
         this.listener = listener;
     }
 
-    public WorkoutPlanAdapter(List<WorkoutPlanModel> workoutPlans) {
+    public WorkoutPlanAdapter(List<WorkoutPlanModel> workoutPlans, DataBaseHelper dataBaseHelper) {
         this.workoutPlans = workoutPlans;
+        this.dataBaseHelper = dataBaseHelper;
     }
 
     @NonNull
@@ -49,6 +52,17 @@ public class WorkoutPlanAdapter extends RecyclerView.Adapter<WorkoutPlanAdapter.
             }
         });
 
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WorkoutPlanModel planToDelete = workoutPlans.get(position);
+
+                dataBaseHelper.deleteWorkoutPlan(planToDelete.getId());
+                workoutPlans.remove(position);
+                notifyDataSetChanged();
+            }
+        });
+
     }
 
     @Override
@@ -58,10 +72,12 @@ public class WorkoutPlanAdapter extends RecyclerView.Adapter<WorkoutPlanAdapter.
 
     public class WorkoutPlanViewHolder extends RecyclerView.ViewHolder {
         TextView textViewNamePlan;
+        ImageButton btnDelete;
 
         public WorkoutPlanViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewNamePlan=itemView.findViewById(R.id.planName);
+            btnDelete=itemView.findViewById(R.id.btnDelete);
         }
 
     }

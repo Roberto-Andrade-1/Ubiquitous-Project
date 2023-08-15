@@ -15,23 +15,26 @@ import java.util.List;
 
 public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanAdapter.OnWorkoutPlanClickListener {
     Button newWorkoutButton, goBack;
-
     RecyclerView workoutPlans;
     WorkoutPlanAdapter adapter;
+    DataBaseHelper dataBaseHelper;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_plan_menu);
 
-        newWorkoutButton=findViewById(R.id.newWorkoutPlanButton);
+        dataBaseHelper = new DataBaseHelper(this);
+
+        newWorkoutButton = findViewById(R.id.newWorkoutPlanButton);
         goBack = findViewById(R.id.goBackBt);
 
-        workoutPlans=findViewById(R.id.recyclerViewWorkoutPlan);
+        workoutPlans = findViewById(R.id.recyclerViewWorkoutPlan);
         workoutPlans.setLayoutManager(new LinearLayoutManager(this));
 
         List<WorkoutPlanModel> allWorkoutPlans = getAllWorkoutPlansFromDatabase();
 
-        adapter=new WorkoutPlanAdapter(allWorkoutPlans);
+        adapter = new WorkoutPlanAdapter(allWorkoutPlans, dataBaseHelper);
         adapter.setOnWorkoutPlanClickListener(this);
 
         workoutPlans.setAdapter(adapter);
@@ -39,7 +42,7 @@ public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanA
         newWorkoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(WorkoutPlanScreen.this,CreateWorkoutPlan.class);
+                Intent intent = new Intent(WorkoutPlanScreen.this, CreateWorkoutPlan.class);
                 startActivity(intent);
             }
         });
@@ -47,7 +50,7 @@ public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanA
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (WorkoutPlanScreen.this, RealMain.class);
+                Intent intent = new Intent(WorkoutPlanScreen.this, RealMain.class);
                 startActivity(intent);
             }
         });
@@ -62,8 +65,16 @@ public class WorkoutPlanScreen extends AppCompatActivity implements WorkoutPlanA
     }
 
 
-    private List<WorkoutPlanModel> getAllWorkoutPlansFromDatabase(){
-        DataBaseHelper dataBaseHelper=new DataBaseHelper(this);
+    private List<WorkoutPlanModel> getAllWorkoutPlansFromDatabase() {
+        dataBaseHelper = new DataBaseHelper(this);
         return dataBaseHelper.getAllWorkoutPlans();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dataBaseHelper != null) {
+            dataBaseHelper.close();
+        }
     }
 }

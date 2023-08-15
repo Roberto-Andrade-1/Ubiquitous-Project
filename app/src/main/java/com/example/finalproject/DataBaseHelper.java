@@ -108,7 +108,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     //method to add a new person with it's information on the database
-    public boolean addOne(PersonModel personModel){
+    public boolean addOne(PersonModel personModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -123,7 +123,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long insert = db.insert(PERSON_TABLE, null, cv);
 
-        if(insert == -1){
+        if (insert == -1) {
             return false;
         } else {
             return true;
@@ -131,7 +131,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     //method to add a new Feedback
-    public boolean addFeedback(FeedbackModel feedbackModel){
+    public boolean addFeedback(FeedbackModel feedbackModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -142,7 +142,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long insert = db.insert(FEEDBACK_TABLE, null, cv);
 
-        if(insert == -1){
+        if (insert == -1) {
             return false;
         } else {
             return true;
@@ -150,7 +150,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     //method to add a new WorkoutPlan
-    public boolean addWorkoutPlan(WorkoutPlanModel workoutPlanModel){
+    public boolean addWorkoutPlan(WorkoutPlanModel workoutPlanModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -160,15 +160,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long insert = db.insert(WORKOUT_PLAN_TABLE, null, cv);
 
-        if(insert == -1){
+        if (insert == -1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
 
     //method to add a new Workout
-    public boolean addWorkout(WorkoutModel workoutModel){
+    public boolean addWorkout(WorkoutModel workoutModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -180,14 +180,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long insert = db.insert(WORKOUT_TABLE, null, cv);
 
-        if(insert == -1){
+        if (insert == -1) {
             return false;
         } else {
             return true;
         }
     }
+
     //method to add a new Workout Record
-    public boolean addWorkoutRecord(WorkoutRecordModel workoutRecordModel){
+    public boolean addWorkoutRecord(WorkoutRecordModel workoutRecordModel) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -200,9 +201,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         long insert = db.insert(WORKOUT_RECORD_TABLE, null, cv);
 
-        if(insert == -1){
+        if (insert == -1) {
             return false;
-        }else {
+        } else {
             return true;
         }
     }
@@ -233,30 +234,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     //method to check the login information
-    public boolean checkPhonePassword (String phone, String password){
+    public boolean checkPhonePassword(String phone, String password) {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("Select * from " + PERSON_TABLE + " where " + COLUMN_PERSON_PHONE + " = ? and " + COLUMN_PERSON_PASSWORD + " = ? ", new String[]{phone, password});
 
-        if(cursor.getCount() > 0){
+        if (cursor.getCount() > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public boolean checkPhones (String phone){
+    public boolean checkPhones(String phone) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.rawQuery("Select * from " + PERSON_TABLE + " where " + COLUMN_PERSON_PHONE + " = ? ", new String[]{phone});
 
-        if(cursor.getCount() > 0){
+        if (cursor.getCount() > 0) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
-    public List<ExerciseModel> getAllExercises(){
+    public List<ExerciseModel> getAllExercises() {
 
         List<ExerciseModel> exerciseList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -279,7 +280,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return exerciseList;
     }
 
-    public PersonModel getUser (String userPhone){
+    public PersonModel getUser(String userPhone) {
 
         PersonModel user = new PersonModel();
 
@@ -287,10 +288,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         String query = "select * from " + PERSON_TABLE + " where " + COLUMN_PERSON_PHONE + " = '" + userPhone + "' ";
 
-        Cursor cursor = db.rawQuery(query,null);
+        Cursor cursor = db.rawQuery(query, null);
 
-        if(cursor != null) {
-            while(cursor.moveToNext()){
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
                 int id = cursor.getInt(cursor.getColumnIndex(COLUMN_ID));
                 String name = cursor.getString(cursor.getColumnIndex(COLUMN_PERSON_NAME));
                 String surname = cursor.getString(cursor.getColumnIndex(COLUMN_PERSON_SURNAME));
@@ -300,8 +301,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 int height = cursor.getInt(cursor.getColumnIndex(COLUMN_PERSON_HEIGHT));
                 String password = cursor.getString(cursor.getColumnIndex(COLUMN_PERSON_PASSWORD));
 
-                user.setId(id); user.setName(name); user.setSurname(surname); user.setPhone(phone);
-                user.setAge(age); user.setWeight(weight); user.setHeight(height); user.setPassword(password);
+                user.setId(id);
+                user.setName(name);
+                user.setSurname(surname);
+                user.setPhone(phone);
+                user.setAge(age);
+                user.setWeight(weight);
+                user.setHeight(height);
+                user.setPassword(password);
             }
         }
         return user;
@@ -320,12 +327,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_PERSON_NAME, user.getName());
-        values.put(COLUMN_PERSON_SURNAME,user.getSurname());
-        values.put(COLUMN_PERSON_PHONE,user.getPhone());
+        values.put(COLUMN_PERSON_SURNAME, user.getSurname());
+        values.put(COLUMN_PERSON_PHONE, user.getPhone());
         values.put(COLUMN_PERSON_AGE, user.getAge());
         values.put(COLUMN_PERSON_WEIGHT, user.getWeight());
-        values.put(COLUMN_PERSON_HEIGHT,user.getHeight());
-        values.put(COLUMN_PERSON_PASSWORD,user.getPassword());
+        values.put(COLUMN_PERSON_HEIGHT, user.getHeight());
+        values.put(COLUMN_PERSON_PASSWORD, user.getPassword());
 
 
         int rowsAffected = db.update(PERSON_TABLE, values, COLUMN_ID + " = ?", new String[]{String.valueOf(user.getId())});
@@ -406,29 +413,29 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return muscleGroupList;
     }
 
-    public List<WorkoutPlanModel> getAllWorkoutPlans(){
-        List<WorkoutPlanModel> res=new ArrayList<>();
+    public List<WorkoutPlanModel> getAllWorkoutPlans() {
+        List<WorkoutPlanModel> res = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
 
         String query = "SELECT DISTINCT " + WORKOUT_PLAN_TABLE + ".*, " + WORKOUT_TABLE + "." + COLUMN_WORKOUT_PLAN_ID +
                 " FROM " + WORKOUT_PLAN_TABLE +
                 " INNER JOIN " + WORKOUT_TABLE + " ON " + WORKOUT_PLAN_TABLE + "." + PLAN_ID + " = " + WORKOUT_TABLE + "." + COLUMN_WORKOUT_PLAN_ID;
 
-        Cursor cursor= db.rawQuery(query,null);
+        Cursor cursor = db.rawQuery(query, null);
 
-        if (cursor!=null && cursor.moveToFirst()){
+        if (cursor != null && cursor.moveToFirst()) {
             do {
-                int id= cursor.getInt(cursor.getColumnIndex(PLAN_ID));
-                String name= cursor.getString(cursor.getColumnIndex(COLUMN_PLAN_NAME));
+                int id = cursor.getInt(cursor.getColumnIndex(PLAN_ID));
+                String name = cursor.getString(cursor.getColumnIndex(COLUMN_PLAN_NAME));
                 String creationDateStr = cursor.getString(cursor.getColumnIndex(COLUMN_CREATION_DATE));
 
                 Date date = new Date(creationDateStr);
 
 
-                WorkoutPlanModel workoutPlanModel=new WorkoutPlanModel(id,name,date);
+                WorkoutPlanModel workoutPlanModel = new WorkoutPlanModel(id, name, date);
                 res.add(workoutPlanModel);
 
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
 
             cursor.close();
         }
@@ -482,17 +489,33 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public double getCaloriesMale (PersonModel personModel){
+    public double getCaloriesMale(PersonModel personModel) {
 
         double calories = (10 * personModel.getWeight()) + (6.25 * personModel.getHeight()) - (5 * personModel.getAge()) + 5 + 300;
 
         return calories;
     }
 
-    public double getCaloriesFemale (PersonModel personModel){
+    public double getCaloriesFemale(PersonModel personModel) {
 
         double calories = (10 * personModel.getWeight()) + (6.25 * personModel.getHeight()) - (5 * personModel.getAge()) - 161 + 200;
 
         return calories;
     }
+
+    public void deleteWorkoutPlan(int workoutPlanId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String workoutWhereClause = COLUMN_WORKOUT_PLAN_ID + " = ?";
+        String[] workoutWhereArgs = { String.valueOf(workoutPlanId) };
+        db.delete(WORKOUT_TABLE, workoutWhereClause, workoutWhereArgs);
+
+        String planWhereClause = PLAN_ID + " = ?";
+        String[] planWhereArgs = { String.valueOf(workoutPlanId) };
+        db.delete(WORKOUT_PLAN_TABLE, planWhereClause, planWhereArgs);
+
+        db.close();
+    }
+
+
 }
