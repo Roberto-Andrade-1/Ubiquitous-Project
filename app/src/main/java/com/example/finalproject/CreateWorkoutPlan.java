@@ -62,16 +62,18 @@ public class CreateWorkoutPlan extends AppCompatActivity {
                     Toast.makeText(CreateWorkoutPlan.this, "Plan name already exists. Please choose a different name.", Toast.LENGTH_SHORT).show();
                 } else {
                     selectedWorkedMuscles = adapter.getSelectedMuscleGroups();
+                    if (selectedWorkedMuscles.isEmpty()) {
+                        Toast.makeText(CreateWorkoutPlan.this, "You need too choose at least one muscular group", Toast.LENGTH_SHORT).show();
+                    } else {
+                        workoutPlanModel = new WorkoutPlanModel(-1, name, date);
+                        dataBaseHelper.addWorkoutPlan(workoutPlanModel);
 
-                    workoutPlanModel = new WorkoutPlanModel(-1, name, date);
-                    dataBaseHelper.addWorkoutPlan(workoutPlanModel);
+                        dataBaseHelper.close();
 
-                    dataBaseHelper.close();
-
-                    Intent intent = new Intent(CreateWorkoutPlan.this, Choose_exercise.class);
-                    intent.putStringArrayListExtra("selection", new ArrayList<>(selectedWorkedMuscles));
-                    startActivity(intent);
-
+                        Intent intent = new Intent(CreateWorkoutPlan.this, Choose_exercise.class);
+                        intent.putStringArrayListExtra("selection", new ArrayList<>(selectedWorkedMuscles));
+                        startActivity(intent);
+                    }
                 }
             }
         });
