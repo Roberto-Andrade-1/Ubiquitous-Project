@@ -34,16 +34,16 @@ public class CreateWorkoutPlan extends AppCompatActivity {
         setContentView(R.layout.activity_create_workout_plan);
 
         editTextPlanName = findViewById(R.id.editTextPlanName);
-        recyclerViewMuscleGroup=findViewById(R.id.recyclerViewMuscleGroup);
+        recyclerViewMuscleGroup = findViewById(R.id.recyclerViewMuscleGroup);
         buttonCreatePlan = findViewById(R.id.buttonCreatePlan);
 
         recyclerViewMuscleGroup.setLayoutManager(new LinearLayoutManager(this));
 
-        List<String> allMuscleGroups= getAllMuscleGroupFromDatabase();
-        adapter=new MuscleGroupAdapter(allMuscleGroups);
+        List<String> allMuscleGroups = getAllMuscleGroupFromDatabase();
+        adapter = new MuscleGroupAdapter(allMuscleGroups);
         recyclerViewMuscleGroup.setAdapter(adapter);
 
-        DataBaseHelper dataBaseHelper= new DataBaseHelper(this);
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
 
         buttonCreatePlan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,17 +52,18 @@ public class CreateWorkoutPlan extends AppCompatActivity {
                 WorkoutPlanModel workoutPlanModel;
 
                 String name = editTextPlanName.getText().toString();
-                LocalDate localDate= LocalDate.now();
+                LocalDate localDate = LocalDate.now();
 
                 Date date = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-                if (name.equals("")){
-                    Toast.makeText(CreateWorkoutPlan.this,"Need a name for workout",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    selectedWorkedMuscles=adapter.getSelectedMuscleGroups();
+                if (name.equals("")) {
+                    Toast.makeText(CreateWorkoutPlan.this, "Need a name for workout", Toast.LENGTH_SHORT).show();
+                } else if (verifyPlanName(name)) {
+                    Toast.makeText(CreateWorkoutPlan.this, "Plan name already exists. Please choose a different name.", Toast.LENGTH_SHORT).show();
+                } else {
+                    selectedWorkedMuscles = adapter.getSelectedMuscleGroups();
 
-                    workoutPlanModel = new WorkoutPlanModel(-1,name, date);
+                    workoutPlanModel = new WorkoutPlanModel(-1, name, date);
                     dataBaseHelper.addWorkoutPlan(workoutPlanModel);
 
                     dataBaseHelper.close();
@@ -77,8 +78,21 @@ public class CreateWorkoutPlan extends AppCompatActivity {
 
     }
 
-    private List<String> getAllMuscleGroupFromDatabase(){
+    private List<String> getAllMuscleGroupFromDatabase() {
         DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
         return dataBaseHelper.getAllMuscleGroups();
+    }
+
+    private boolean verifyPlanName(String planName) {
+        boolean res = false;
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(this);
+
+        List<WorkoutPlanModel> workoutPlans = dataBaseHelper.getAllWorkoutPlans();
+        for (int i = 0; i < workoutPlans.size(); i++) {
+            if (planName.equals(workoutPlans.get(i).getName()))
+                res = true;
+        }
+        dataBaseHelper.close();
+        return res;
     }
 }

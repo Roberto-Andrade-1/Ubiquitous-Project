@@ -516,6 +516,4 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         db.close();
     }
-
-
 }
