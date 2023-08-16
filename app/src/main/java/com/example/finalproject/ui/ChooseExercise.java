@@ -1,8 +1,7 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -11,10 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.example.finalproject.R;
+import com.example.finalproject.adapter.ChooseExerciseAdapter;
+import com.example.finalproject.database.DataBaseHelper;
+import com.example.finalproject.model.ExerciseModel;
+import com.example.finalproject.model.WorkoutModel;
+
 import java.util.List;
 
-public class Choose_exercise extends AppCompatActivity {
+public class ChooseExercise extends AppCompatActivity {
 
     private Button confirm;
     private RecyclerView selectExercise;
@@ -46,9 +50,9 @@ public class Choose_exercise extends AppCompatActivity {
             public void onClick(View view) {
                 List<ExerciseModel> selectedExercises = adapter.getSelectedExercises();
                 if (selectedExercises.isEmpty()) {
-                    Toast.makeText(Choose_exercise.this, "Need to select at least one exercise", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChooseExercise.this, "Need to select at least one exercise", Toast.LENGTH_SHORT).show();
                 } else {
-                    DataBaseHelper dataBaseHelper = new DataBaseHelper(Choose_exercise.this);
+                    DataBaseHelper dataBaseHelper = new DataBaseHelper(ChooseExercise.this);
                     int lastPlanId = dataBaseHelper.getLastPlanID();
 
                     for (ExerciseModel selectedExercise : selectedExercises) {
@@ -64,7 +68,7 @@ public class Choose_exercise extends AppCompatActivity {
                     }
 
                     dataBaseHelper.close();
-                    Intent intentReturn = new Intent(Choose_exercise.this, WorkoutPlanScreen.class);
+                    Intent intentReturn = new Intent(ChooseExercise.this, WorkoutPlanScreen.class);
                     startActivity(intentReturn);
                 }
             }

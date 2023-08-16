@@ -1,16 +1,18 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.style.IconMarginSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.finalproject.R;
+import com.example.finalproject.database.DataBaseHelper;
+import com.example.finalproject.model.ExerciseModel;
 
 import java.util.List;
 import java.util.Random;

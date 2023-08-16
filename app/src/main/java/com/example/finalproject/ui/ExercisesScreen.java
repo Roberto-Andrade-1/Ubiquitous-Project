@@ -1,10 +1,15 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.finalproject.R;
+import com.example.finalproject.adapter.ExerciseAdapter;
+import com.example.finalproject.database.DataBaseHelper;
+import com.example.finalproject.model.ExerciseModel;
 
 import java.util.List;
 

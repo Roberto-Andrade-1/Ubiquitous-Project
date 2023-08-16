@@ -1,15 +1,18 @@
-package com.example.finalproject;
+package com.example.finalproject.adapter;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.finalproject.database.DataBaseHelper;
+import com.example.finalproject.R;
+import com.example.finalproject.model.WorkoutPlanModel;
 
 import java.util.List;
 

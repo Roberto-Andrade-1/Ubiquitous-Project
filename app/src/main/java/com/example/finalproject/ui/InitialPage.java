@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.finalproject.R;
 
 public class InitialPage extends AppCompatActivity {
 

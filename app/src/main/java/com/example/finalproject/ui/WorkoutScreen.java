@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.example.finalproject.R;
 
 public class WorkoutScreen extends AppCompatActivity {
 
@@ -36,7 +38,7 @@ public class WorkoutScreen extends AppCompatActivity {
         chest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(WorkoutScreen.this,ExercisesScreen.class);
+                Intent intent=new Intent(WorkoutScreen.this, ExercisesScreen.class);
                 intent.putExtra("category","Chest");
                 startActivity(intent);
             }

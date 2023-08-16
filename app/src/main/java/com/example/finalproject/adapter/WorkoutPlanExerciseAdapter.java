@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,11 +8,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.NotificationCompatExtras;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.example.finalproject.R;
+import com.example.finalproject.model.ExerciseModel;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.example.finalproject.R;
+import com.example.finalproject.model.ExerciseModel;
 
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder> {
 
