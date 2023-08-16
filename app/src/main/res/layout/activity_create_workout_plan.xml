@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".CreateWorkoutPlan"
+    tools:context=".ui.CreateWorkoutPlan"
     android:background="#403F3F">
 
     <TextView

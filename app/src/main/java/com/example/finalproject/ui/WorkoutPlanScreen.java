@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.finalproject.R;
+import com.example.finalproject.adapter.WorkoutPlanAdapter;
+import com.example.finalproject.database.DataBaseHelper;
+import com.example.finalproject.model.WorkoutPlanModel;
 
 import java.util.List;
 

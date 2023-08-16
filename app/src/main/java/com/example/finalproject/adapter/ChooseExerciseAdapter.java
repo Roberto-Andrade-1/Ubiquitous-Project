@@ -1,6 +1,5 @@
-package com.example.finalproject;
+package com.example.finalproject.adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.example.finalproject.model.ExerciseModel;
+import com.example.finalproject.R;
 
 import java.util.ArrayList;
 import java.util.List;

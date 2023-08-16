@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.finalproject.R;
+import com.example.finalproject.database.DataBaseHelper;
+import com.example.finalproject.model.PersonModel;
 
 public class ProgressScreen extends AppCompatActivity {
 

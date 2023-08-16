@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.database;
 
 
 import android.content.ContentValues;
@@ -9,6 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
+
+import com.example.finalproject.model.ExerciseModel;
+import com.example.finalproject.model.FeedbackModel;
+import com.example.finalproject.model.PersonModel;
+import com.example.finalproject.model.WorkoutModel;
+import com.example.finalproject.model.WorkoutPlanModel;
+import com.example.finalproject.model.WorkoutRecordModel;
 
 import java.util.ArrayList;
 import java.util.Collections;

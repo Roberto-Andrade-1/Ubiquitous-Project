@@ -1,18 +1,21 @@
-package com.example.finalproject;
+package com.example.finalproject.ui;
 
 import android.content.Intent;
-import android.media.metrics.EditingSession;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.MultiAutoCompleteTextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.finalproject.adapter.MuscleGroupAdapter;
+import com.example.finalproject.R;
+import com.example.finalproject.model.WorkoutPlanModel;
+import com.example.finalproject.database.DataBaseHelper;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -70,7 +73,7 @@ public class CreateWorkoutPlan extends AppCompatActivity {
 
                         dataBaseHelper.close();
 
-                        Intent intent = new Intent(CreateWorkoutPlan.this, Choose_exercise.class);
+                        Intent intent = new Intent(CreateWorkoutPlan.this, ChooseExercise.class);
                         intent.putStringArrayListExtra("selection", new ArrayList<>(selectedWorkedMuscles));
                         startActivity(intent);
                     }
