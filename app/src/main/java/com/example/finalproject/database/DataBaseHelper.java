@@ -15,7 +15,6 @@ import com.example.finalproject.model.FeedbackModel;
 import com.example.finalproject.model.PersonModel;
 import com.example.finalproject.model.WorkoutModel;
 import com.example.finalproject.model.WorkoutPlanModel;
-import com.example.finalproject.model.WorkoutRecordModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -57,14 +56,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SETS = "SETS";
     public static final String COLUMN_WORKOUT_PLAN_ID = "WORKOUT_PLAN_ID"; //Foreign key for workout ID
 
-    //WORKOUT RECORD
-    public static final String WORKOUT_RECORD_TABLE = "WORKOUT_RECORD_TABLE";
-    public static final String RECORD_ID = "RECORD_ID";
-    public static final String COLUMN_RECORD_DATE = "RECORD_DATE";
-    public static final String COLUMN_RECORD_TIME = "RECORD_TIME";
-    public static final String COLUMN_RECORD_DURATION = "RECORD_DURATION";
-    public static final String COLUMN_WEIGHT_USED = "WEIGHT_USED";
-    public static final String COLUMN_WORKOUT_ID = "COLUMN_WORKOUT_ID";
 
     //EXERCISE
     public static final String EXERCISE_TABLE = "EXERCISE_TABLE";
@@ -92,10 +83,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String createWorkoutPlan = "CREATE TABLE " + WORKOUT_PLAN_TABLE + " (" + PLAN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PLAN_NAME + " TEXT, " + COLUMN_CREATION_DATE + " DATE)";
         //table for the workout
         String createWorkout = "CREATE TABLE " + WORKOUT_TABLE + " (" + WORKOUT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_REPETITIONS + " STRING, " + COLUMN_SETS + " INT, " + COLUMN_WORKOUT_PLAN_ID + " INT, " + COLUMN_EXERCISE_ID + " INT, FOREIGN KEY (" + COLUMN_WORKOUT_PLAN_ID + ") REFERENCES " + WORKOUT_PLAN_TABLE + " ( " + PLAN_ID + "), FOREIGN KEY (" + COLUMN_EXERCISE_ID + ") REFERENCES " + EXERCISE_TABLE + " (" + EXERCISE_ID + ") )";
-        //table for the workout record
-        String createWorkoutRecord = "CREATE TABLE " + WORKOUT_RECORD_TABLE + " (" + RECORD_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_RECORD_DATE + " DATE, " + COLUMN_RECORD_TIME + " TIME, " + COLUMN_RECORD_DURATION + " INT, " + COLUMN_WEIGHT_USED + " FLOAT, " + COLUMN_PERSON_ID + " INT, " + COLUMN_WORKOUT_ID + " INT, FOREIGN KEY (" + COLUMN_PERSON_ID + ") REFERENCES " + PERSON_TABLE + " ( " + COLUMN_ID + " ), FOREIGN KEY (" + COLUMN_WORKOUT_ID + ") REFERENCES " + WORKOUT_TABLE + " ( " + WORKOUT_ID + ") )";
-        //table for the workout exercise
-        String createWorkoutExercise = "CREATE TABLE " + WORKOUT_EXERCISE_TABLE + " (" + COLUMN_EXERCISE_ID + " INT, " + COLUMN_WORKOUT_ID + " INT, FOREIGN KEY (" + COLUMN_WORKOUT_ID + ") REFERENCES " + WORKOUT_TABLE + " (" + WORKOUT_ID + "), FOREIGN KEY (" + COLUMN_EXERCISE_ID + ") REFERENCES " + EXERCISE_TABLE + " (" + EXERCISE_ID + ") )";
         //table for the exercise
         String createExercise = "CREATE TABLE " + EXERCISE_TABLE + " (" + EXERCISE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_EXERCISE_NAME + " TEXT, " + COLUMN_WORKED_MUSCLES + " TEXT, " + COLUMN_DESCRIPTION + " TEXT)";
 
@@ -103,8 +90,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL(createFeedback);
         db.execSQL(createWorkoutPlan);
         db.execSQL(createWorkout);
-        db.execSQL(createWorkoutRecord);
-        db.execSQL(createWorkoutExercise);
         db.execSQL(createExercise);
 
         insertDefaultExercises(db);
@@ -194,26 +179,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    //method to add a new Workout Record
-    public boolean addWorkoutRecord(WorkoutRecordModel workoutRecordModel) {
 
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put(COLUMN_RECORD_DATE, workoutRecordModel.getDate().toString());
-        cv.put(COLUMN_RECORD_TIME, workoutRecordModel.getTime().toString());
-        cv.put(COLUMN_RECORD_DURATION, workoutRecordModel.getDuration());
-        cv.put(COLUMN_WEIGHT_USED, workoutRecordModel.getWeightUsed());
-        cv.put(COLUMN_PERSON_ID, workoutRecordModel.getPersonID());
-
-        long insert = db.insert(WORKOUT_RECORD_TABLE, null, cv);
-
-        if (insert == -1) {
-            return false;
-        } else {
-            return true;
-        }
-    }
 
     private void insertDefaultExercises(SQLiteDatabase db) {
 
